@@ -26,6 +26,7 @@ class LoginFragment : Fragment() {
     private lateinit var pass : TextView
     private lateinit var btnLog : Button
     private lateinit var btnReg : Button
+    private lateinit var mail : String
 
     private lateinit var v : View
 
@@ -74,7 +75,7 @@ class LoginFragment : Fragment() {
                     pass.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        var action = LoginFragmentDirections.actionLoginFragmentToMainActivity()
+                        var action = LoginFragmentDirections.actionLoginFragmentToHomeFragment(email.text.toString())
                         v.findNavController().navigate(action)
                     } else {
                         vm.loginFail(v)
