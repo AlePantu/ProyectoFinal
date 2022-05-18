@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository.userMailLogin
 
 
 import com.example.proyectofinal.viewmodels.HomeViewModel
@@ -41,8 +42,8 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        mailUser = HomeFragmentArgs.fromBundle(requireArguments()).userMail
-        mailText.text = mailUser
+        //mailUser = HomeFragmentArgs.fromBundle(requireArguments()).userMail
+        mailText.text = userMailLogin
 
     }
 

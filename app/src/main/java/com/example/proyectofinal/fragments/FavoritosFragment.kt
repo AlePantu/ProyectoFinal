@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository
+import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.FavoritosViewModel
 
+@Suppress("DEPRECATION")
 class FavoritosFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FavoritosFragment()
-    }
+   private lateinit var v : View
+   private lateinit var userMail : TextView
 
     private lateinit var viewModel: FavoritosViewModel
 
@@ -21,7 +24,16 @@ class FavoritosFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_favoritos, container, false)
+        v = inflater.inflate(R.layout.fragment_favoritos, container, false)
+
+        userMail = v.findViewById(R.id.textView3)
+        return v
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        userMail.text = userMailLogin
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

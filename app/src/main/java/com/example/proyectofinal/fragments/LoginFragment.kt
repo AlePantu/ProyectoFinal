@@ -1,7 +1,5 @@
 package com.example.proyectofinal.fragments
 
-import android.app.AlertDialog
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,8 +10,10 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.proyectofinal.R
+
+import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.LoginViewModel
-import com.google.android.material.snackbar.Snackbar
+
 import com.google.firebase.auth.FirebaseAuth
 
 @Suppress("DEPRECATION")
@@ -75,6 +75,7 @@ class LoginFragment : Fragment() {
                     pass.text.toString()
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        userMailLogin = email.text.toString()
                         var action = LoginFragmentDirections.actionLoginFragmentToHomeFragment(email.text.toString())
                         v.findNavController().navigate(action)
                     } else {
