@@ -10,15 +10,18 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.Favoritos
 
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.LoginViewModel
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @Suppress("DEPRECATION")
 class LoginFragment : Fragment() {
 
+    private val db = FirebaseFirestore.getInstance()
 
     private val vm: LoginViewModel by viewModels()
 
@@ -58,6 +61,9 @@ class LoginFragment : Fragment() {
                 ).addOnCompleteListener {
 
                     if (it.isSuccessful) {
+                        userMailLogin = email.text.toString()
+
+
                         vm.registerOK(v)
                     } else {
                         vm.registerFail(v)
@@ -76,7 +82,7 @@ class LoginFragment : Fragment() {
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         userMailLogin = email.text.toString()
-                        var action = LoginFragmentDirections.actionLoginFragmentToHomeFragment(email.text.toString())
+                        var action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                         v.findNavController().navigate(action)
                     } else {
                         vm.loginFail(v)

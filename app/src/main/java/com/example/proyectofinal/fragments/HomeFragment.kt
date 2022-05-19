@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        //mailUser = HomeFragmentArgs.fromBundle(requireArguments()).userMail
         mailText.text = userMailLogin
 
     }

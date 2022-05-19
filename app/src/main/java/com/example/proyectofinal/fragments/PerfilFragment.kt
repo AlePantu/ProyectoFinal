@@ -8,10 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.PerfilViewModel
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
+
 
 @Suppress("DEPRECATION")
 class PerfilFragment : Fragment() {
@@ -21,12 +25,15 @@ class PerfilFragment : Fragment() {
    private lateinit var v : View
 
    private lateinit var userMail : TextView
-
-   private lateinit var nameText : TextView
+   private lateinit var nombreText : TextView
    private lateinit var apellidoText : TextView
+   private lateinit var nameText : TextView
+   private lateinit var lastNameText : TextView
    private lateinit var saveBtn : Button
+   private lateinit var name : String
+   private lateinit var last : String
 
-    private lateinit var viewModel: PerfilViewModel
+    private val vm: PerfilViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +43,36 @@ class PerfilFragment : Fragment() {
 
         userMail = v.findViewById(R.id.textView2)
         nameText = v.findViewById(R.id.nameTextView)
-        apellidoText = v.findViewById(R.id.apeText)
+        lastNameText = v.findViewById(R.id.apeText)
         saveBtn = v.findViewById(R.id.guardarBtn)
+
+        nombreText = v.findViewById(R.id.nameInText)
+        apellidoText = v.findViewById(R.id.lastInText)
+
+        userMail.text = userMailLogin
+
+        val docRef = db.collection("users").document(userMailLogin)
+
+        docRef.get().addOnCompleteListener{ document ->
+            if (document != null) {
+
+                name = document.getResult().get("nombre").toString()
+                last = document.getResult().get("apellido").toString()
+
+                if (name != "null"){
+                    nombreText.text = name
+                } else {
+                    nombreText.text = ""
+                }
+                if(last != "null") {
+                    apellidoText.text = last
+                } else {
+                    apellidoText.text = ""
+                }
+
+            }
+
+        }
 
         return v
     }
@@ -45,16 +80,16 @@ class PerfilFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        userMail.text = userMailLogin
+
 
         saveBtn.setOnClickListener {
 
-                db.collection("users").document(userMailLogin).collection("favs")
-                    .document("fav1").set(
+                db.collection("users").document(userMailLogin).set(
                     hashMapOf(
-                        "id" to apellidoText.text.toString(),
+                        "apellido" to lastNameText.text.toString(),
                         "nombre" to nameText.text.toString()
-                    )
+                    ) ,
+                    SetOptions.merge()
                 )
 
 
@@ -64,7 +99,6 @@ class PerfilFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PerfilViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
