@@ -14,9 +14,7 @@
         android:layout_marginTop="92dp"
         android:text="@string/textview"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinnerDti"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="144dp" />
 
     <ImageView
@@ -42,20 +40,23 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
-        android:id="@+id/spinnerDti"
-        android:layout_width="316dp"
-        android:layout_height="40dp"
-        android:background="@color/cardview_light_background"
-        android:dropDownWidth="match_parent"
-        android:dropDownSelector="@color/black"
-        android:elevation="8dp"
-        android:popupElevation="16dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/spinnerDTI"
+        android:layout_width="288dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/selecTextView"
+        android:layout_width="216dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="216dp"
+        android:hint="Aca tendria que haber una playa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDTI" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
