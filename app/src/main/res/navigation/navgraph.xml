@@ -18,7 +18,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.proyectofinal.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_beachFragment"
+            app:destination="@id/beachFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritosFragment"
         android:name="com.example.proyectofinal.fragments.FavoritosFragment"
@@ -33,4 +37,9 @@
         android:id="@+id/settingsFragment"
         android:name="com.example.proyectofinal.fragments.SettingsFragment"
         android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/beachFragment"
+        android:name="com.example.proyectofinal.fragments.BeachFragment"
+        android:label="fragment_beach"
+        tools:layout="@layout/fragment_beach" />
 </navigation>

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository
+import com.example.proyectofinal.entities.UserRepository.userBeachSelect
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.FavoritosViewModel
 
@@ -17,6 +18,7 @@ class FavoritosFragment : Fragment() {
 
    private lateinit var v : View
    private lateinit var userMail : TextView
+   private lateinit var userBeach : TextView
 
     private lateinit var viewModel: FavoritosViewModel
 
@@ -27,6 +29,7 @@ class FavoritosFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_favoritos, container, false)
 
         userMail = v.findViewById(R.id.textView3)
+        userBeach = v.findViewById(R.id.textView5)
         return v
     }
 
@@ -34,6 +37,8 @@ class FavoritosFragment : Fragment() {
         super.onStart()
 
         userMail.text = userMailLogin
+        userBeach.text = userBeachSelect
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

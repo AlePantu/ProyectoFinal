@@ -9,36 +9,31 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
+import androidx.fragment.app.viewModels
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository.userBeachSelect
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.HomeViewModel
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
 
-    var listaMeses = listOf("enero","febrero","marzo","abril","mayo","junio","julio",
-        "agosto","septiembre","octubre","noviembre","diciembre")
-
-
 
     private lateinit var v : View
-
-
-
-    private lateinit var viewModel: HomeViewModel
-
-    private lateinit var mailUser: String
+    private lateinit var vm : HomeViewModel
     private lateinit var mailText : TextView
-    private lateinit var spinnerDTI : Spinner
     private val db = FirebaseFirestore.getInstance()
-    val dtiNames  = arrayListOf<String>()
+    private var dtiNames  = arrayListOf<String>()
     private lateinit var selectedBeach : TextView
+    private lateinit var mapBeach : MapView
+    private lateinit var listPopupWindowButton : Button
+    private lateinit var listPopupWindow: ListPopupWindow
 
 
     override fun onCreateView(
@@ -48,17 +43,16 @@ class HomeFragment : Fragment() {
        v =inflater.inflate(R.layout.fragment_home, container, false)
 
         mailText = v.findViewById(R.id.textView)
-        spinnerDTI = v.findViewById(R.id.spinnerDTI)
         selectedBeach = v.findViewById(R.id.selecTextView)
+        listPopupWindowButton = v.findViewById(R.id.list_popup_button)
+        listPopupWindow = ListPopupWindow(this.context!!, null, androidx.transition.R.attr.listPopupWindowStyle)
 
         db.collection("dtis").get().addOnSuccessListener { miList ->
             for(dti in miList) {
                 dtiNames.add(dti.get("nombre") as String)
             }
-
-            populateSpinner(spinnerDTI,dtiNames,context!!)
-
         }
+
 
 
         return v
@@ -67,25 +61,29 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-
         mailText.text = userMailLogin
+        selectedBeach.text = userBeachSelect
 
-        spinnerDTI.setSelection(0, false) // evita la primer falsa entrada
-        spinnerDTI.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+// Set button as the list popup's anchor
+        listPopupWindow.anchorView = listPopupWindowButton
 
-               selectedBeach.text = dtiNames[position]
+        val adapter = ArrayAdapter(context!!, R.layout.list_popup_window_item, dtiNames)
+        listPopupWindow.setAdapter(adapter)
 
-                Snackbar.make(v, dtiNames[position], Snackbar.LENGTH_SHORT).show()
-            }
+// Set list popup's item click listener
+      listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, view: View?, position: Int, id: Long ->
+            // Respond to list popup window item click.
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
+            userBeachSelect = dtiNames[position]
+          selectedBeach.text = userBeachSelect
 
-            }
-        }
+            Snackbar.make(v, dtiNames[position], Snackbar.LENGTH_SHORT).show()
+            // Dismiss popup.
+            listPopupWindow.dismiss()
+             }
 
-
-
+// Show list popup window on button click.
+            listPopupWindowButton.setOnClickListener { v: View? -> listPopupWindow.show() }
     }
 
    /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -100,22 +98,4 @@ class HomeFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }*/
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-
-    }
-
-    private fun populateSpinner (spinner: Spinner, list : List<String>, context : Context)
-    {
-        //   val aa = ArrayAdapter( context!!, android.R.layout.simple_spinner_item, list)
-        val aa = ArrayAdapter(context,android.R.layout.simple_spinner_item, list)
-
-        // Set layout to use when the list of choices appear
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // Set Adapter to Spinner
-        spinner.adapter = aa
-    }
-
 }
