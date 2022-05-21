@@ -4,4 +4,5 @@ object UserRepository {
 
     public var userMailLogin : String = ""
     public var userBeachSelect : String = ""
+
 }

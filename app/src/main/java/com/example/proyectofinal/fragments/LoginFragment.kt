@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
          v = inflater.inflate(R.layout.fragment_login, container, false)
 
         email = v.findViewById(R.id.emailText)
@@ -62,8 +62,6 @@ class LoginFragment : Fragment() {
 
                     if (it.isSuccessful) {
                         userMailLogin = email.text.toString()
-
-
                         vm.registerOK(v)
                     } else {
                         vm.registerFail(v)
@@ -82,7 +80,7 @@ class LoginFragment : Fragment() {
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         userMailLogin = email.text.toString()
-                        var action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+                        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                         v.findNavController().navigate(action)
                     } else {
                         vm.loginFail(v)
@@ -92,9 +90,5 @@ class LoginFragment : Fragment() {
         }
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-    }
 
 }

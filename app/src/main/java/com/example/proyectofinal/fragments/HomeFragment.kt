@@ -26,14 +26,19 @@ class HomeFragment : Fragment() {
 
 
     private lateinit var v : View
-    private lateinit var vm : HomeViewModel
+    private val vm : HomeViewModel by viewModels()
     private lateinit var mailText : TextView
     private val db = FirebaseFirestore.getInstance()
     private var dtiNames  = arrayListOf<String>()
-    private lateinit var selectedBeach : TextView
     private lateinit var mapBeach : MapView
     private lateinit var listPopupWindowButton : Button
     private lateinit var listPopupWindow: ListPopupWindow
+
+   // private lateinit var beachTemp : TextView
+    //private lateinit var beachName : TextView
+   // private lateinit var beachCrowd : TextView
+
+
 
 
     override fun onCreateView(
@@ -43,9 +48,12 @@ class HomeFragment : Fragment() {
        v =inflater.inflate(R.layout.fragment_home, container, false)
 
         mailText = v.findViewById(R.id.textView)
-        selectedBeach = v.findViewById(R.id.selecTextView)
         listPopupWindowButton = v.findViewById(R.id.list_popup_button)
         listPopupWindow = ListPopupWindow(this.context!!, null, androidx.transition.R.attr.listPopupWindowStyle)
+
+        //beachName = v.findViewById(R.id.nameBeachView)
+        //beachTemp = v.findViewById(R.id.tempBeachView)
+       // beachCrowd = v.findViewById(R.id.crowdBeachView)
 
         db.collection("dtis").get().addOnSuccessListener { miList ->
             for(dti in miList) {
@@ -62,7 +70,7 @@ class HomeFragment : Fragment() {
         super.onStart()
 
         mailText.text = userMailLogin
-        selectedBeach.text = userBeachSelect
+       // selectedBeach.text = userBeachSelect
 
 // Set button as the list popup's anchor
         listPopupWindow.anchorView = listPopupWindowButton
@@ -71,31 +79,30 @@ class HomeFragment : Fragment() {
         listPopupWindow.setAdapter(adapter)
 
 // Set list popup's item click listener
-      listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, view: View?, position: Int, id: Long ->
+      listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
             // Respond to list popup window item click.
 
             userBeachSelect = dtiNames[position]
-          selectedBeach.text = userBeachSelect
 
-            Snackbar.make(v, dtiNames[position], Snackbar.LENGTH_SHORT).show()
+
+          val dtiDocument = (position+1).toString()
+
+        vm.showData( dtiDocument ,v)
+
+            Snackbar.make(v, dtiDocument, Snackbar.LENGTH_SHORT).show()
             // Dismiss popup.
             listPopupWindow.dismiss()
              }
 
 // Show list popup window on button click.
-            listPopupWindowButton.setOnClickListener { v: View? -> listPopupWindow.show() }
+            listPopupWindowButton.setOnClickListener { listPopupWindow.show() }
     }
 
-   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
+   /* private fun showDtiData(dti : String){
 
-        val id = when(item.itemId) {
-
-            R.id.action_add ->Snackbar.make(v, "add", Snackbar.LENGTH_SHORT).show()
-
-            R.id.action_fav ->Snackbar.make(v, "fav", Snackbar.LENGTH_SHORT).show()
-
-            else -> ""
+        db.collection("dti").document(dti).get().addOnSuccessListener {
+            temp.setText(it.get("temperatura") as String?)
+            clima.setText(it.get("clima") as String?)
         }
-        return super.onOptionsItemSelected(item)
     }*/
 }
