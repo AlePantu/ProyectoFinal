@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository.userBeachSelect
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
@@ -32,12 +33,9 @@ class HomeFragment : Fragment() {
     private var dtiNames  = arrayListOf<String>()
     private lateinit var mapBeach : MapView
     private lateinit var listPopupWindowButton : Button
+    private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
-
-   // private lateinit var beachTemp : TextView
-    //private lateinit var beachName : TextView
-   // private lateinit var beachCrowd : TextView
-
+    private lateinit var dtiDocument : String
 
 
 
@@ -49,15 +47,14 @@ class HomeFragment : Fragment() {
 
         mailText = v.findViewById(R.id.textView)
         listPopupWindowButton = v.findViewById(R.id.list_popup_button)
+        goBeachButton = v.findViewById(R.id.goBeachBtn)
         listPopupWindow = ListPopupWindow(this.context!!, null, androidx.transition.R.attr.listPopupWindowStyle)
 
-        //beachName = v.findViewById(R.id.nameBeachView)
-        //beachTemp = v.findViewById(R.id.tempBeachView)
-       // beachCrowd = v.findViewById(R.id.crowdBeachView)
-
-        db.collection("dtis").get().addOnSuccessListener { miList ->
-            for(dti in miList) {
-                dtiNames.add(dti.get("nombre") as String)
+        if(dtiNames.isEmpty()) {
+            db.collection("dtis").get().addOnSuccessListener { miList ->
+                for (dti in miList) {
+                    dtiNames.add(dti.get("nombre") as String)
+                }
             }
         }
 
@@ -85,7 +82,7 @@ class HomeFragment : Fragment() {
             userBeachSelect = dtiNames[position]
 
 
-          val dtiDocument = (position+1).toString()
+          dtiDocument = (position+1).toString()
 
         vm.showData( dtiDocument ,v)
 
@@ -96,13 +93,15 @@ class HomeFragment : Fragment() {
 
 // Show list popup window on button click.
             listPopupWindowButton.setOnClickListener { listPopupWindow.show() }
+
+
+        goBeachButton.setOnClickListener {
+
+            val action = HomeFragmentDirections.actionHomeFragmentToBeachFragment(dtiDocument)
+            v.findNavController().navigate(action)
+
+        }
     }
 
-   /* private fun showDtiData(dti : String){
 
-        db.collection("dti").document(dti).get().addOnSuccessListener {
-            temp.setText(it.get("temperatura") as String?)
-            clima.setText(it.get("clima") as String?)
-        }
-    }*/
 }

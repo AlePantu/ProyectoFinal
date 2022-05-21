@@ -41,5 +41,9 @@
         android:id="@+id/beachFragment"
         android:name="com.example.proyectofinal.fragments.BeachFragment"
         android:label="fragment_beach"
-        tools:layout="@layout/fragment_beach" />
+        tools:layout="@layout/fragment_beach" >
+        <argument
+            android:name="dti"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -113,4 +113,17 @@
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/tempBeachView" />
 
+    <Button
+        android:id="@+id/goBeachBtn"
+        android:layout_width="122dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="32dp"
+        android:text="Explorar DTI"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crowdBeachView"
+        app:layout_constraintVertical_bias="0.068" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
