@@ -1,6 +1,6 @@
 package com.example.proyectofinal.fragments
 
-import androidx.lifecycle.ViewModelProvider
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,8 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.proyectofinal.R
 import com.example.proyectofinal.viewmodels.BeachViewModel
 import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+
 
 class BeachFragment : Fragment() {
 
@@ -22,7 +21,8 @@ class BeachFragment : Fragment() {
 
     private lateinit var dtiDocument : TextView
 
-    private lateinit var mapView: MapView
+    private lateinit var idPlaya : String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +31,6 @@ class BeachFragment : Fragment() {
         v = inflater.inflate(R.layout.fragment_beach, container, false)
 
         dtiDocument = v.findViewById(R.id.dtiDoc)
-        mapView = v.findViewById(R.id.mapView)
 
         return v
     }
@@ -39,12 +38,16 @@ class BeachFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        dtiDocument.text = BeachFragmentArgs.fromBundle(requireArguments()).dti
+        idPlaya = BeachFragmentArgs.fromBundle(requireArguments()).dti
 
-        mapView.getMapAsync {
-            it.addMarker(MarkerOptions().position( LatLng(0.0 , 0.0)).title("Marker"))
-        }
+        vm.showDataBeach(idPlaya , v)
     }
+
+
+
+
+
+
 
 
 

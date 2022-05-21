@@ -38,6 +38,16 @@ class HomeFragment : Fragment() {
     private lateinit var dtiDocument : String
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        db.collection("dtis").get().addOnSuccessListener { miList ->
+            for (dti in miList) {
+                dtiNames.add(dti.get("nombre") as String)
+            }
+        }
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,17 +58,7 @@ class HomeFragment : Fragment() {
         mailText = v.findViewById(R.id.textView)
         listPopupWindowButton = v.findViewById(R.id.list_popup_button)
         goBeachButton = v.findViewById(R.id.goBeachBtn)
-        listPopupWindow = ListPopupWindow(this.context!!, null, androidx.transition.R.attr.listPopupWindowStyle)
-
-        if(dtiNames.isEmpty()) {
-            db.collection("dtis").get().addOnSuccessListener { miList ->
-                for (dti in miList) {
-                    dtiNames.add(dti.get("nombre") as String)
-                }
-            }
-        }
-
-
+        listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
 
         return v
     }
@@ -72,7 +72,7 @@ class HomeFragment : Fragment() {
 // Set button as the list popup's anchor
         listPopupWindow.anchorView = listPopupWindowButton
 
-        val adapter = ArrayAdapter(context!!, R.layout.list_popup_window_item, dtiNames)
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_popup_window_item, dtiNames)
         listPopupWindow.setAdapter(adapter)
 
 // Set list popup's item click listener

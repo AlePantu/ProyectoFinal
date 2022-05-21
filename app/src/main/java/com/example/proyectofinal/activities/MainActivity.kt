@@ -8,7 +8,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.proyectofinal.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private lateinit var bottomNavView : BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
 
 
     }

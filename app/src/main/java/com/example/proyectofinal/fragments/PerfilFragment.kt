@@ -1,6 +1,6 @@
 package com.example.proyectofinal.fragments
 
-import androidx.lifecycle.ViewModelProvider
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
+
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.PerfilViewModel
@@ -56,8 +56,8 @@ class PerfilFragment : Fragment() {
         docRef.get().addOnCompleteListener{ document ->
             if (document != null) {
 
-                name = document.getResult().get("nombre").toString()
-                last = document.getResult().get("apellido").toString()
+                name = document.result.get("nombre").toString()
+                last = document.result.get("apellido").toString()
 
                 if (name != "null"){
                     nombreText.text = name
