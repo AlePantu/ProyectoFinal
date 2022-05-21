@@ -27,7 +27,7 @@ class HomeViewModel : ViewModel() {
 
         db.collection("dtis").document(dti).get().addOnSuccessListener {
 
-            beachName.text = it.get("nombre") as String?
+            beachName.text = it.get("nombre").toString()
             beachTemp.text = it.get("temperatura").toString()
             beachCrowd.text = it.get("aforo").toString()
 
