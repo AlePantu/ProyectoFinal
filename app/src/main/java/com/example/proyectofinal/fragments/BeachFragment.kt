@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.proyectofinal.R
 import com.example.proyectofinal.viewmodels.BeachViewModel
 import com.google.android.gms.maps.MapView
+import me.tankery.lib.circularseekbar.CircularSeekBar
 
 
 class BeachFragment : Fragment() {
@@ -24,6 +25,8 @@ class BeachFragment : Fragment() {
     private lateinit var idPlaya : String
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,15 +35,17 @@ class BeachFragment : Fragment() {
 
         dtiDocument = v.findViewById(R.id.dtiDoc)
 
+
+
         return v
     }
 
     override fun onStart() {
         super.onStart()
 
-        idPlaya = BeachFragmentArgs.fromBundle(requireArguments()).dti
+     idPlaya = BeachFragmentArgs.fromBundle(requireArguments()).dti
 
-        vm.showDataBeach(idPlaya , v)
+      vm.showDataBeach(idPlaya , v)
     }
 
 

@@ -31,5 +31,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dtiDoc" />
 
+    <me.tankery.lib.circularseekbar.CircularSeekBar
+        android:id="@+id/pcaforo"
+        android:layout_width="121dp"
+        android:layout_height="113dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="28dp"
+        app:cs_circle_color="@android:color/holo_green_light"
+        app:cs_circle_fill="@color/white"
+        app:cs_circle_progress_color="@android:color/holo_red_light"
+        app:cs_circle_stroke_width="2dp"
+        app:cs_circle_style="butt"
+        app:cs_disable_pointer="false"
+        app:cs_disable_progress_glow="true"
+        app:cs_end_angle="0"
+        app:cs_hide_progress_when_empty="true"
+        app:cs_lock_enabled="true"
+        app:cs_maintain_equal_circle="true"
+        app:cs_max="100"
+        app:cs_move_outside_circle="true"
+        app:cs_negative_enabled="false"
+        app:cs_pointer_alpha_ontouch="5"
+        app:cs_pointer_angle="1"
+        app:cs_pointer_color="@android:color/holo_blue_light"
+        app:cs_pointer_stroke_width="12dp"
+        app:cs_start_angle="180"
+        app:cs_use_custom_radii="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.309" />
+
+    <TextView
+        android:id="@+id/aforoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/pcaforo"
+        app:layout_constraintEnd_toEndOf="@+id/pcaforo"
+        app:layout_constraintStart_toStartOf="@+id/pcaforo"
+        app:layout_constraintTop_toTopOf="@+id/pcaforo" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
