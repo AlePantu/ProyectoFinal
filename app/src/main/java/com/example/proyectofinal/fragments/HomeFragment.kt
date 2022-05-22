@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var v : View
     private val vm : HomeViewModel by viewModels()
-    private lateinit var mailText : TextView
+
     private val db = FirebaseFirestore.getInstance()
     private var dtiNames  = arrayListOf<String>()
     private lateinit var mapBeach : MapView
@@ -36,6 +36,7 @@ class HomeFragment : Fragment() {
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
     private lateinit var dtiDocument : String
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +56,7 @@ class HomeFragment : Fragment() {
     ): View? {
        v =inflater.inflate(R.layout.fragment_home, container, false)
 
-        mailText = v.findViewById(R.id.textView)
+
         listPopupWindowButton = v.findViewById(R.id.list_popup_button)
         goBeachButton = v.findViewById(R.id.goBeachBtn)
         listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
@@ -66,8 +67,9 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        mailText.text = userMailLogin
-       // selectedBeach.text = userBeachSelect
+        vm.userData(userMailLogin , v)
+
+
 
 // Set button as the list popup's anchor
         listPopupWindow.anchorView = listPopupWindowButton
@@ -80,13 +82,10 @@ class HomeFragment : Fragment() {
             // Respond to list popup window item click.
 
             userBeachSelect = dtiNames[position]
+            dtiDocument = (position+1).toString()
 
+            vm.showData( dtiDocument ,v)
 
-          dtiDocument = (position+1).toString()
-
-        vm.showData( dtiDocument ,v)
-
-            Snackbar.make(v, dtiDocument, Snackbar.LENGTH_SHORT).show()
             // Dismiss popup.
             listPopupWindow.dismiss()
              }
@@ -105,3 +104,7 @@ class HomeFragment : Fragment() {
 
 
 }
+
+
+
+

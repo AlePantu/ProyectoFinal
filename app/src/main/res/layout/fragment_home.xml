@@ -67,26 +67,6 @@
         app:layout_constraintTop_toBottomOf="@+id/list_popup_button" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Temperatura:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Aforo:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
         android:id="@+id/nameBeachView"
         android:layout_width="95dp"
         android:layout_height="20dp"
@@ -95,35 +75,216 @@
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/list_popup_button" />
 
-    <TextView
-        android:id="@+id/tempBeachView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="33dp"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/nameBeachView" />
+    <me.tankery.lib.circularseekbar.CircularSeekBar
+        android:id="@+id/pcaforo"
+        android:layout_width="121dp"
+        android:layout_height="113dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cs_circle_color="@android:color/holo_green_light"
+        app:cs_circle_fill="@color/white"
+        app:cs_circle_progress_color="@android:color/holo_red_dark"
+        app:cs_circle_stroke_width="2dp"
+        app:cs_circle_style="butt"
+        app:cs_disable_pointer="false"
+        app:cs_disable_progress_glow="false"
+        app:cs_end_angle="0"
+        app:cs_hide_progress_when_empty="true"
+        app:cs_lock_enabled="true"
+        app:cs_maintain_equal_circle="true"
+        app:cs_max="100"
+        app:cs_move_outside_circle="true"
+        app:cs_negative_enabled="false"
+        app:cs_pointer_alpha_ontouch="5"
+        app:cs_pointer_angle="1"
+        app:cs_pointer_color="@android:color/holo_blue_light"
+        app:cs_pointer_stroke_width="12dp"
+        app:cs_start_angle="180"
+        app:cs_use_custom_radii="false"
+        app:layout_constraintEnd_toStartOf="@+id/pctemp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
-        android:id="@+id/crowdBeachView"
+        android:id="@+id/aforoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/tempBeachView" />
+        android:text="Aforo"
+        app:layout_constraintBottom_toBottomOf="@+id/pcaforo"
+        app:layout_constraintEnd_toEndOf="@+id/pcaforo"
+        app:layout_constraintStart_toStartOf="@+id/pcaforo"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/crowd"
+        app:layout_constraintBottom_toBottomOf="@+id/pcaforo"
+        app:layout_constraintEnd_toEndOf="@+id/pcaforo"
+        app:layout_constraintStart_toStartOf="@+id/pcaforo"
+        app:layout_constraintTop_toTopOf="@+id/pcaforo" />
 
     <Button
         android:id="@+id/goBeachBtn"
         android:layout_width="122dp"
         android:layout_height="41dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Explorar DTI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crowdBeachView"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintTop_toBottomOf="@+id/pctemp"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <me.tankery.lib.circularseekbar.CircularSeekBar
+        android:id="@+id/pctemp"
+        android:layout_width="121dp"
+        android:layout_height="113dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cs_circle_color="@android:color/holo_red_light"
+        app:cs_circle_fill="@color/white"
+        app:cs_circle_progress_color="@android:color/holo_green_light"
+        app:cs_circle_stroke_width="2dp"
+        app:cs_circle_style="butt"
+        app:cs_disable_pointer="false"
+        app:cs_disable_progress_glow="true"
+        app:cs_end_angle="0"
+        app:cs_hide_progress_when_empty="true"
+        app:cs_lock_enabled="true"
+        app:cs_maintain_equal_circle="true"
+        app:cs_max="40"
+        app:cs_move_outside_circle="true"
+        app:cs_negative_enabled="false"
+        app:cs_pointer_alpha_ontouch="5"
+        app:cs_pointer_angle="1"
+        app:cs_pointer_color="@android:color/holo_blue_light"
+        app:cs_pointer_stroke_width="12dp"
+        app:cs_start_angle="180"
+        app:cs_use_custom_radii="false"
+        app:layout_constraintEnd_toStartOf="@+id/pcpark"
+        app:layout_constraintStart_toEndOf="@+id/pcaforo"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/temp"
+        app:layout_constraintBottom_toBottomOf="@+id/pctemp"
+        app:layout_constraintEnd_toEndOf="@+id/pctemp"
+        app:layout_constraintStart_toStartOf="@+id/pctemp"
+        app:layout_constraintTop_toTopOf="@+id/pctemp" />
+
+    <TextView
+        android:id="@+id/tempTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Temperatura"
+        app:layout_constraintBottom_toBottomOf="@+id/pctemp"
+        app:layout_constraintEnd_toEndOf="@+id/pctemp"
+        app:layout_constraintStart_toStartOf="@+id/pctemp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <me.tankery.lib.circularseekbar.CircularSeekBar
+        android:id="@+id/pcpark"
+        android:layout_width="121dp"
+        android:layout_height="113dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cs_circle_color="@android:color/holo_green_light"
+        app:cs_circle_fill="@color/white"
+        app:cs_circle_progress_color="@android:color/holo_red_dark"
+        app:cs_circle_stroke_width="2dp"
+        app:cs_circle_style="butt"
+        app:cs_disable_pointer="false"
+        app:cs_disable_progress_glow="true"
+        app:cs_end_angle="0"
+        app:cs_hide_progress_when_empty="true"
+        app:cs_lock_enabled="true"
+        app:cs_maintain_equal_circle="true"
+        app:cs_max="100"
+        app:cs_move_outside_circle="true"
+        app:cs_negative_enabled="false"
+        app:cs_pointer_alpha_ontouch="5"
+        app:cs_pointer_angle="1"
+        app:cs_pointer_color="@android:color/holo_blue_light"
+        app:cs_pointer_stroke_width="12dp"
+        app:cs_start_angle="180"
+        app:cs_use_custom_radii="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pctemp"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <TextView
+        android:id="@+id/parkTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parking"
+
+        app:layout_constraintBottom_toBottomOf="@+id/pcpark"
+        app:layout_constraintEnd_toEndOf="@+id/pcpark"
+        app:layout_constraintStart_toStartOf="@+id/pcpark"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/parking"
+        app:layout_constraintBottom_toBottomOf="@+id/pcpark"
+        app:layout_constraintEnd_toEndOf="@+id/pcpark"
+        app:layout_constraintStart_toStartOf="@+id/pcpark"
+        app:layout_constraintTop_toTopOf="@+id/pcpark" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="21dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameBeachView" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Aforo"
+        app:layout_constraintEnd_toEndOf="@+id/pcaforo"
+        app:layout_constraintStart_toStartOf="@+id/pcaforo"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Temperatura"
+        app:layout_constraintEnd_toEndOf="@+id/pctemp"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="@+id/pctemp"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Parking"
+        app:layout_constraintEnd_toEndOf="@+id/pcpark"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/pcpark"
+        app:layout_constraintTop_toBottomOf="@+id/space" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
