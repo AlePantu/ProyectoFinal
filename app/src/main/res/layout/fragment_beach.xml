@@ -223,4 +223,36 @@
         app:layout_constraintStart_toStartOf="@+id/pcpark"
         app:layout_constraintTop_toTopOf="@+id/pcpark" />
 
+    <Button
+        android:id="@+id/btnAddFavoritos"
+        android:layout_width="231dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Agregar a Favoritos"
+        app:layout_constraintBottom_toTopOf="@+id/btnRemoveFavoritos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space2" />
+
+    <Button
+        android:id="@+id/btnRemoveFavoritos"
+        android:layout_width="231dp"
+        android:layout_height="43dp"
+        android:text="Eliminar de Favoritos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddFavoritos" />
+
+    <Space
+        android:id="@+id/space2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pctemp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

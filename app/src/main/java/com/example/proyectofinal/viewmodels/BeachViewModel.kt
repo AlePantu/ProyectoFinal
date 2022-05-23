@@ -1,9 +1,15 @@
 package com.example.proyectofinal.viewmodels
 
+import android.content.Context
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository.listOfFavs
+import com.example.proyectofinal.entities.UserRepository.userMailLogin
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.protobuf.FloatValue
 import me.tankery.lib.circularseekbar.CircularSeekBar
@@ -26,6 +32,9 @@ class BeachViewModel : ViewModel() {
     private var aforo : Float = 0F
     private var temp : Float = 0F
     private var park : Float = 0F
+
+    private lateinit var bAddToFavs : Button
+    private lateinit var bRemoveFavs : Button
 
 
     fun showDataBeach(idPlaya: String, v: View) {
@@ -60,5 +69,70 @@ class BeachViewModel : ViewModel() {
 
 
     }
+
+    fun showButtons(v: View, docDti: String) {
+        bAddToFavs = v.findViewById(R.id.btnAddFavoritos)
+        bRemoveFavs = v.findViewById(R.id.btnRemoveFavoritos)
+
+        if(!esFavorito(docDti)) {
+            bRemoveFavs.visibility = View.INVISIBLE
+        }else{
+            bAddToFavs.visibility = View.INVISIBLE
+        }
+    }
+
+    fun esFavorito(docDti: String): Boolean {
+        val x = listOfFavs.find { f -> f == docDti }
+        return x != null
+    }
+
+    fun dtiNotInList(v: View, context : Context) {
+
+        val text = "Dti no se encuentra en lista de favoritos"
+        val duration = Toast.LENGTH_SHORT
+
+        val toast = Toast.makeText(context, text, duration)
+        toast.show()
+    }
+
+    fun favRemoved(v : View, context : Context) {
+        //Snackbar.make(v, "Dti ha sido eliminado de su lista de favoritos", Snackbar.LENGTH_SHORT).show()
+        val text = "Dti ha sido eliminado de su lista de favoritos"
+        val duration = Toast.LENGTH_SHORT
+
+        val toast = Toast.makeText(context, text, duration)
+        toast.show()
+    }
+
+    fun removeFavorite(x: String) {
+        var favoritos = db.collection("users").document(userMailLogin)
+        favoritos.update("favs", FieldValue.arrayRemove(x))
+    }
+
+    fun addFavotite(x: String) {
+        var favoritos = db.collection("users").document(userMailLogin)
+        favoritos.update("favs", FieldValue.arrayUnion(x))
+
+    }
+
+    fun favAdded(v : View, context : Context) {
+        // Snackbar.make(v, "Dti agregado correctamente a su lista de favoritos", Snackbar.LENGTH_SHORT).show()
+        val text = "Dti agregado correctamente a su lista de favoritos"
+        val duration = Toast.LENGTH_SHORT
+
+        val toast = Toast.makeText(context, text, duration)
+        toast.show()
+    }
+
+    fun favInList(v : View, context : Context) {
+        //Snackbar.make(v, "El Dti ya se encuentra en su lista de favoritos", Snackbar.LENGTH_SHORT).show()
+        val text = "El Dti ya se encuentra en su lista de favoritos"
+        val duration = Toast.LENGTH_SHORT
+
+        val toast = Toast.makeText(context, text, duration)
+        toast.show()
+    }
+
+
 
 }
