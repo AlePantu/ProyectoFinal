@@ -7,15 +7,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 private val db = FirebaseFirestore.getInstance()
 
 
-//class FavRepository {
+class FavRepository {
 
-  // var favList: MutableList<Favoritos> = mutableListOf()
+  var favList: MutableList<Favoritos> = mutableListOf()
 
-  /*  init {
+    init {
 
         db.collection("users").document(userMailLogin).get().addOnSuccessListener {
 
             listOfFavs = it.get("favs") as ArrayList<String>
         }
-    }*/
-//}
+    }
+}

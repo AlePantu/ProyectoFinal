@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
+
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.proyectofinal.R
 import com.example.proyectofinal.viewmodels.BeachViewModel
-import com.google.android.gms.maps.MapView
-import me.tankery.lib.circularseekbar.CircularSeekBar
+
 
 
 class BeachFragment : Fragment() {
@@ -21,7 +21,7 @@ class BeachFragment : Fragment() {
 
     private val vm: BeachViewModel by viewModels()
 
-    private lateinit var dtiDocument : TextView
+    private lateinit var btnHome : Button
 
     private lateinit var idPlaya : String
 
@@ -37,7 +37,7 @@ class BeachFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_beach, container, false)
 
-        dtiDocument = v.findViewById(R.id.dtiDoc)
+        btnHome = v.findViewById(R.id.homeBtn)
         bAddToFav = v.findViewById(R.id.btnAddFavoritos)
         bRemoveFav = v.findViewById(R.id.btnRemoveFavoritos)
 
@@ -75,14 +75,14 @@ class BeachFragment : Fragment() {
                 vm.dtiNotInList(v, requireContext())
             }
         }
+
+
+      btnHome.setOnClickListener {
+
+          activity?.onBackPressed()
+
+      }
+
     }
-
-
-
-
-
-
-
-
 
 }

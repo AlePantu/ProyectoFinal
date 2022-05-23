@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
     private lateinit var listPopupWindowButton : Button
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
-    private lateinit var dtiDocument : String
+    private var dtiDocument : String = "1"
 
 
 
@@ -63,6 +63,7 @@ class HomeFragment : Fragment() {
         goBeachButton = v.findViewById(R.id.goBeachBtn)
         listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
 
+        vm.showData(dtiDocument , v)
         return v
     }
 

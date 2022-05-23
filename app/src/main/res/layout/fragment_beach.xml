@@ -8,17 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.BeachFragment" >
 
-    <TextView
-        android:id="@+id/dtiDoc"
-        android:layout_width="144dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcaforo"
         android:layout_width="121dp"
@@ -105,16 +94,17 @@
 
     <TextView
         android:id="@+id/nameBeach"
-        android:layout_width="203dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="272dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="16dp"
-        android:text="TextView"
-        android:textSize="24dp"
+        android:textSize="48sp"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dtiDoc" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.828" />
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcpark"
@@ -227,10 +217,8 @@
         android:id="@+id/btnAddFavoritos"
         android:layout_width="231dp"
         android:layout_height="43dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="76dp"
         android:text="Agregar a Favoritos"
-        app:layout_constraintBottom_toTopOf="@+id/btnRemoveFavoritos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space2" />
@@ -239,12 +227,13 @@
         android:id="@+id/btnRemoveFavoritos"
         android:layout_width="231dp"
         android:layout_height="43dp"
+        android:layout_marginBottom="168dp"
         android:text="Eliminar de Favoritos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddFavoritos" />
+        app:layout_constraintTop_toBottomOf="@+id/space2"
+        app:layout_constraintVertical_bias="0.541" />
 
     <Space
         android:id="@+id/space2"
@@ -254,5 +243,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pctemp" />
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddFavoritos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

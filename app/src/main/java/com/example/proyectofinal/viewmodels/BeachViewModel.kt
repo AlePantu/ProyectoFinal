@@ -116,7 +116,7 @@ class BeachViewModel : ViewModel() {
     }
 
     fun favAdded(v : View, context : Context) {
-        // Snackbar.make(v, "Dti agregado correctamente a su lista de favoritos", Snackbar.LENGTH_SHORT).show()
+
         val text = "Dti agregado correctamente a su lista de favoritos"
         val duration = Toast.LENGTH_SHORT
 
@@ -125,7 +125,7 @@ class BeachViewModel : ViewModel() {
     }
 
     fun favInList(v : View, context : Context) {
-        //Snackbar.make(v, "El Dti ya se encuentra en su lista de favoritos", Snackbar.LENGTH_SHORT).show()
+
         val text = "El Dti ya se encuentra en su lista de favoritos"
         val duration = Toast.LENGTH_SHORT
 

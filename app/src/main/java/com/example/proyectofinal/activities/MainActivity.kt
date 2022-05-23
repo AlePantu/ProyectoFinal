@@ -22,12 +22,9 @@ class MainActivity : AppCompatActivity(){
 
         navHostFragment.navController.addOnDestinationChangedListener{_, destination, _ ->
             when(destination.id){
-                R.id.homeFragment -> showBottomBar()
-                R.id.favoritosFragment -> showBottomBar()
-                R.id.perfilFragment -> showBottomBar()
-                R.id.settingsFragment -> showBottomBar()
-
-                else -> hideBottomBar()
+                R.id.loginFragment -> hideBottomBar()
+                R.id.beachFragment -> hideBottomBar()
+                else -> showBottomBar()
             }
 
         }
