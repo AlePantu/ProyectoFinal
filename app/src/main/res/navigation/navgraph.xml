@@ -27,7 +27,11 @@
         android:id="@+id/favoritosFragment"
         android:name="com.example.proyectofinal.fragments.FavoritosFragment"
         android:label="fragment_favoritos"
-        tools:layout="@layout/fragment_favoritos" />
+        tools:layout="@layout/fragment_favoritos" >
+        <action
+            android:id="@+id/action_favoritosFragment_to_beachFragment"
+            app:destination="@id/beachFragment" />
+    </fragment>
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.proyectofinal.fragments.PerfilFragment"

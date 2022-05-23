@@ -6,7 +6,9 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository
+import com.example.proyectofinal.entities.UserRepository.listOfFavs
 import com.example.proyectofinal.entities.UserRepository.userBeachSelect
+import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.fragments.HomeFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import me.tankery.lib.circularseekbar.CircularSeekBar
@@ -68,7 +70,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun userData(userMailLogin: String, v: View) {
+    fun userData(v: View) {
 
         mailText = v.findViewById(R.id.textView)
 
@@ -83,6 +85,12 @@ class HomeViewModel : ViewModel() {
             }
         }
 
+    }
+
+    fun populateFavs() {
+        db.collection("users").document(userMailLogin).get().addOnSuccessListener {
+           listOfFavs = it.get("favs") as ArrayList<String>
+        }
     }
 
 }

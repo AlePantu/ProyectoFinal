@@ -42,6 +42,8 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        vm.populateFavs()
+
         db.collection("dtis").get().addOnSuccessListener { miList ->
             for (dti in miList) {
                 dtiNames.add(dti.get("nombre") as String)
@@ -67,7 +69,7 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        vm.userData(userMailLogin , v)
+        vm.userData(v)
 
 
 

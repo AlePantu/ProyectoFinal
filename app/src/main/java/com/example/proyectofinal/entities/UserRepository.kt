@@ -4,5 +4,6 @@ object UserRepository {
 
     public var userMailLogin : String = ""
     public var userBeachSelect : String = ""
+    public var listOfFavs : MutableList<String> = mutableListOf()
 
 }
