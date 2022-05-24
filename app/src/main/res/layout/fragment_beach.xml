@@ -10,8 +10,8 @@
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcaforo"
-        android:layout_width="121dp"
-        android:layout_height="113dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -52,8 +52,8 @@
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pctemp"
-        android:layout_width="121dp"
-        android:layout_height="113dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -112,8 +112,8 @@
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcpark"
-        android:layout_width="121dp"
-        android:layout_height="113dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -139,10 +139,10 @@
         app:cs_use_custom_radii="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.308" />
 
     <TextView
         android:id="@+id/parkTextView"
@@ -223,7 +223,6 @@
         android:id="@+id/btnAddFavoritos"
         android:layout_width="231dp"
         android:layout_height="43dp"
-        android:layout_marginTop="76dp"
         android:text="Agregar a Favoritos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -233,20 +232,19 @@
         android:id="@+id/btnRemoveFavoritos"
         android:layout_width="231dp"
         android:layout_height="43dp"
-        android:layout_marginBottom="168dp"
         android:text="Eliminar de Favoritos"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/space2"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintTop_toTopOf="@+id/btnAddFavoritos" />
 
     <Space
         android:id="@+id/space2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="176dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pctemp" />
 
@@ -255,9 +253,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/flagImage"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddFavoritos" />
+        app:layout_constraintTop_toBottomOf="@+id/pcaforo"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/flagTextView"
+        android:layout_width="114dp"
+        android:layout_height="32dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/flagImage"
+        app:layout_constraintEnd_toEndOf="@+id/flagImage"
+        app:layout_constraintStart_toStartOf="@+id/flagImage" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Bandera"
+        app:layout_constraintBottom_toTopOf="@+id/flagImage"
+        app:layout_constraintEnd_toEndOf="@+id/flagImage"
+        app:layout_constraintStart_toStartOf="@+id/flagImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

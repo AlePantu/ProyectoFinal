@@ -3,8 +3,10 @@ package com.example.proyectofinal.viewmodels
 import android.content.Context
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
@@ -29,9 +31,14 @@ class BeachViewModel : ViewModel() {
     private lateinit var pcPark : CircularSeekBar
     private lateinit var parkView: TextView
 
+    private lateinit var imageFlag : ImageView
+    private lateinit var flagView : TextView
+
     private var aforo : Float = 0F
     private var temp : Float = 0F
     private var park : Float = 0F
+
+    private lateinit var bandera : String
 
     private lateinit var bAddToFavs : Button
     private lateinit var bRemoveFavs : Button
@@ -51,6 +58,9 @@ class BeachViewModel : ViewModel() {
         parkView = v.findViewById(R.id.parkTextView)
         pcPark = v.findViewById(R.id.pcpark)
 
+        imageFlag = v.findViewById(R.id.flagImage)
+        flagView = v.findViewById(R.id.flagTextView)
+
         db.collection("dtis").document(idPlaya).get().addOnSuccessListener {
             pcAforo.max = (it.get("maxAforo").toString()).toFloat()
             pcPark.max = (it.get("maxPark").toString()).toFloat()
@@ -62,6 +72,35 @@ class BeachViewModel : ViewModel() {
            aforoView.text = it.get("aforo").toString()
             tempView.text = it.get("temperatura").toString()
             parkView.text = it.get("parking").toString()
+            bandera = it.get("bandera").toString()
+
+
+            when(bandera){
+                "bueno" -> {
+                    imageFlag.setImageDrawable(v.context.getDrawable(R.drawable.bueno))
+                    flagView.text = "BUENO"
+                }
+                "dudoso" ->{
+                    imageFlag.setImageDrawable(v.context.getDrawable(R.drawable.dudoso))
+                    flagView.text = "DUDOSO"
+                }
+                "peligroso" -> {
+                    imageFlag.setImageDrawable(v.context.getDrawable(R.drawable.peligroso))
+                    flagView.text = "PELIGROSO"
+                }
+                "niñoper" -> {
+                    imageFlag.setImageDrawable(v.context.getDrawable(R.drawable.ninoextr))
+                    flagView.text = "NIÑO PERDIDO"
+                }
+                "prohibido" -> {
+                    imageFlag.setImageDrawable(v.context.getDrawable(R.drawable.prohibido))
+                    flagView.text = "PROHIBIDO BAÑARSE"
+                }
+                "rayos" -> {
+                    imageFlag.setImageDrawable(v.context.getDrawable(R.drawable.rayos))
+                    flagView.text = "RAYOS - EVACUAR"
+                }
+            }
             pcAforo.progress = aforo
             pcTemp.progress = temp
             pcPark.progress = park

@@ -36,6 +36,7 @@ class HomeFragment : Fragment() {
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
     private var dtiDocument : String = "1"
+    private lateinit var playa : String
 
 
 
@@ -84,10 +85,14 @@ class HomeFragment : Fragment() {
       listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
             // Respond to list popup window item click.
 
-            userBeachSelect = dtiNames[position]
-            dtiDocument = (position+1).toString()
+           playa = dtiNames[position]
 
-            vm.showData( dtiDocument ,v)
+         // Toast.makeText(context, playa, Toast.LENGTH_SHORT).show()
+
+     //dtiDocument = vm.searchId(playa , v)
+
+         dtiDocument = (position+1).toString()
+          vm.showData( dtiDocument ,v)
 
             // Dismiss popup.
             listPopupWindow.dismiss()

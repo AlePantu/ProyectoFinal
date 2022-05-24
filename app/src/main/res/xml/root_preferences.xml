@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/messages_header">
 
@@ -14,6 +15,21 @@
             app:key="reply"
             app:title="@string/reply_title"
             app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory >
+
+    <PreferenceCategory app:title="@string/night_mode_header">
+
+        <ListPreference
+            android:title="Modo Oscuro"
+            android:key="dark_mode"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="1"
+            android:entries="@array/dark_mode_entries"
+            android:entryValues="@array/dark_mode_entries_values"
+            />
+
+
 
     </PreferenceCategory>
 

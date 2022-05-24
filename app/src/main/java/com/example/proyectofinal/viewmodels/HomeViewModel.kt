@@ -1,17 +1,16 @@
 package com.example.proyectofinal.viewmodels
 
-import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
-import com.example.proyectofinal.entities.UserRepository
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
-import com.example.proyectofinal.entities.UserRepository.userBeachSelect
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
-import com.example.proyectofinal.fragments.HomeFragment
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import me.tankery.lib.circularseekbar.CircularSeekBar
+import kotlin.concurrent.timerTask
 
 class HomeViewModel : ViewModel() {
 
@@ -93,4 +92,30 @@ class HomeViewModel : ViewModel() {
         }
     }
 
+   fun searchId(playa: String , v: View): String {
+        var id : String=""
+        var nombrePlaya = ""
+
+        db.collection("dtis").whereEqualTo("nombre", playa).get().addOnSuccessListener {
+                documents ->
+            for (document in documents){
+                nombrePlaya =document.get("nombre").toString()
+                if (nombrePlaya == playa){
+                    id = document.get("id").toString()
+                }
+            }
+            Thread.sleep(3*1000)
+        }
+       Toast.makeText(v.context, id, Toast.LENGTH_SHORT).show()
+
+       Toast.makeText(v.context, id, Toast.LENGTH_SHORT).show()
+       return id
+
+
+
+    }
+
+
 }
+
+
