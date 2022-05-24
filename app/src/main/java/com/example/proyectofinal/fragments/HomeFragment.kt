@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -67,12 +68,11 @@ class HomeFragment : Fragment() {
         return v
     }
 
+
     override fun onStart() {
         super.onStart()
 
-        vm.userData(v)
-
-
+      // vm.userData(v)
 
 // Set button as the list popup's anchor
         listPopupWindow.anchorView = listPopupWindowButton

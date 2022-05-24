@@ -52,5 +52,8 @@
         <action
             android:id="@+id/action_beachFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_beachFragment_to_favoritosFragment"
+            app:destination="@id/favoritosFragment" />
     </fragment>
 </navigation>

@@ -81,6 +81,8 @@ class BeachFragment : Fragment() {
 
           activity?.onBackPressed()
 
+        //  v.findNavController().navigate(R.id.action_beachFragment_to_homeFragment)
+
       }
 
     }

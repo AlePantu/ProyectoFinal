@@ -17,7 +17,7 @@ class HomeViewModel : ViewModel() {
 
     private val db = FirebaseFirestore.getInstance()
 
-    private lateinit var mailText : TextView
+    //private lateinit var mailText : TextView
 
     private lateinit var beachName : TextView
     private lateinit var pcAforo : CircularSeekBar
@@ -33,7 +33,7 @@ class HomeViewModel : ViewModel() {
     private var temp : Float = 0F
     private var park : Float = 0F
 
-    private lateinit var nameUser : String
+   // private lateinit var nameUser : String
 
 
     fun showData(dti : String , v : View) {
@@ -70,7 +70,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun userData(v: View) {
+  /*  fun userData(v: View) {
 
         mailText = v.findViewById(R.id.textView)
 
@@ -85,7 +85,7 @@ class HomeViewModel : ViewModel() {
             }
         }
 
-    }
+    }*/
 
     fun populateFavs() {
         db.collection("users").document(userMailLogin).get().addOnSuccessListener {

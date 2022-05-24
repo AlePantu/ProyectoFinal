@@ -7,18 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:text="@string/textview"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="79dp"
@@ -26,8 +14,6 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
         android:src="@drawable/ciudades"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,23 +24,23 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="48dp"
         android:src="@drawable/reddti"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/list_popup_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="8dp"
         android:text="Mostrar Dtis"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView7"
@@ -63,6 +49,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Nombre playa:"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_popup_button" />
 
@@ -71,6 +58,7 @@
         android:layout_width="95dp"
         android:layout_height="20dp"
         android:layout_marginTop="32dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/list_popup_button" />
@@ -82,11 +70,10 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         app:cs_circle_color="@android:color/holo_green_light"
         app:cs_circle_fill="@color/white"
         app:cs_circle_progress_color="@android:color/holo_red_dark"
-        app:cs_circle_stroke_width="2dp"
+        app:cs_circle_stroke_width="8dp"
         app:cs_circle_style="butt"
         app:cs_disable_pointer="false"
         app:cs_disable_progress_glow="false"
@@ -99,7 +86,7 @@
         app:cs_negative_enabled="false"
         app:cs_pointer_alpha_ontouch="5"
         app:cs_pointer_angle="1"
-        app:cs_pointer_color="@android:color/holo_blue_light"
+        app:cs_pointer_color="@android:color/holo_blue_dark"
         app:cs_pointer_stroke_width="12dp"
         app:cs_start_angle="180"
         app:cs_use_custom_radii="false"
@@ -112,6 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aforo"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/pcaforo"
         app:layout_constraintEnd_toEndOf="@+id/pcaforo"
         app:layout_constraintStart_toStartOf="@+id/pcaforo"
@@ -128,32 +116,32 @@
 
     <Button
         android:id="@+id/goBeachBtn"
-        android:layout_width="122dp"
+        android:layout_width="0dp"
         android:layout_height="41dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="Explorar DTI"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pctemp"
-        app:layout_constraintVertical_bias="0.08" />
+        app:layout_constraintVertical_bias="0.114" />
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pctemp"
         android:layout_width="121dp"
         android:layout_height="113dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:cs_circle_color="@android:color/holo_red_light"
+        app:cs_circle_color="@android:color/holo_red_dark"
         app:cs_circle_fill="@color/white"
         app:cs_circle_progress_color="@android:color/holo_green_light"
-        app:cs_circle_stroke_width="2dp"
+        app:cs_circle_stroke_width="8dp"
         app:cs_circle_style="butt"
         app:cs_disable_pointer="false"
-        app:cs_disable_progress_glow="true"
+        app:cs_disable_progress_glow="false"
         app:cs_end_angle="0"
         app:cs_hide_progress_when_empty="true"
         app:cs_lock_enabled="true"
@@ -163,7 +151,7 @@
         app:cs_negative_enabled="false"
         app:cs_pointer_alpha_ontouch="5"
         app:cs_pointer_angle="1"
-        app:cs_pointer_color="@android:color/holo_blue_light"
+        app:cs_pointer_color="@android:color/holo_blue_dark"
         app:cs_pointer_stroke_width="12dp"
         app:cs_start_angle="180"
         app:cs_use_custom_radii="false"
@@ -187,6 +175,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="Temperatura"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/pctemp"
         app:layout_constraintEnd_toEndOf="@+id/pctemp"
         app:layout_constraintStart_toStartOf="@+id/pctemp"
@@ -197,16 +186,15 @@
         android:layout_width="121dp"
         android:layout_height="113dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:cs_circle_color="@android:color/holo_green_light"
         app:cs_circle_fill="@color/white"
         app:cs_circle_progress_color="@android:color/holo_red_dark"
-        app:cs_circle_stroke_width="2dp"
+        app:cs_circle_stroke_width="8dp"
         app:cs_circle_style="butt"
         app:cs_disable_pointer="false"
-        app:cs_disable_progress_glow="true"
+        app:cs_disable_progress_glow="false"
         app:cs_end_angle="0"
         app:cs_hide_progress_when_empty="true"
         app:cs_lock_enabled="true"
@@ -216,7 +204,7 @@
         app:cs_negative_enabled="false"
         app:cs_pointer_alpha_ontouch="5"
         app:cs_pointer_angle="1"
-        app:cs_pointer_color="@android:color/holo_blue_light"
+        app:cs_pointer_color="@android:color/holo_blue_dark"
         app:cs_pointer_stroke_width="12dp"
         app:cs_start_angle="180"
         app:cs_use_custom_radii="false"
@@ -229,7 +217,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Parking"
-
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/pcpark"
         app:layout_constraintEnd_toEndOf="@+id/pcpark"
         app:layout_constraintStart_toStartOf="@+id/pcpark"
@@ -249,9 +237,9 @@
         android:id="@+id/space"
         android:layout_width="21dp"
         android:layout_height="3dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameBeachView" />
 
@@ -261,6 +249,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Aforo"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/pcaforo"
         app:layout_constraintStart_toStartOf="@+id/pcaforo"
         app:layout_constraintTop_toBottomOf="@+id/space" />
@@ -271,6 +260,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Temperatura"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/pctemp"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/pctemp"
@@ -282,6 +272,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Parking"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/pcpark"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/pcpark"

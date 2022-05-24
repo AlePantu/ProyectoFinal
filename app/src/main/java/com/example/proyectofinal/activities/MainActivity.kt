@@ -33,12 +33,12 @@ class MainActivity : AppCompatActivity(){
 
     }
 
-    fun showBottomBar(){
+    private fun showBottomBar(){
         val navBar: BottomNavigationView = findViewById(R.id.bottom_bar)
         navBar.visibility = View.VISIBLE
     }
 
-    fun hideBottomBar(){
+    private fun hideBottomBar(){
         val navBar: BottomNavigationView = findViewById(R.id.bottom_bar)
         navBar.visibility = View.GONE
     }
