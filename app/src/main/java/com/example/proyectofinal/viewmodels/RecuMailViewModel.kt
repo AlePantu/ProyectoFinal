@@ -2,6 +2,7 @@ package com.example.proyectofinal.viewmodels
 
 import android.app.ProgressDialog
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -9,6 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 class RecuMailViewModel : ViewModel() {
 
     private lateinit var mAuth : FirebaseAuth
+
+
 
 
 

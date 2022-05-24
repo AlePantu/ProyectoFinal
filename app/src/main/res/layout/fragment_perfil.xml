@@ -11,11 +11,12 @@
         android:id="@+id/textView6"
         android:layout_width="95dp"
         android:layout_height="35dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="144dp"
         android:text="Apellido:"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nameTextView"
@@ -29,16 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lastInText" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="58dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/guardarBtn"
@@ -68,17 +59,18 @@
         android:id="@+id/textView4"
         android:layout_width="95dp"
         android:layout_height="35dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
         android:text="Nombre: "
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="32dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameInText"
         android:layout_width="209dp"
         android:layout_height="33dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="84dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.797"
@@ -89,7 +81,7 @@
         android:id="@+id/lastInText"
         android:layout_width="209dp"
         android:layout_height="33dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="144dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.797"

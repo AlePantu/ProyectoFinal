@@ -24,7 +24,7 @@ class PerfilFragment : Fragment() {
 
    private lateinit var v : View
 
-   private lateinit var userMail : TextView
+
    private lateinit var nombreText : TextView
    private lateinit var apellidoText : TextView
    private lateinit var nameText : TextView
@@ -41,7 +41,7 @@ class PerfilFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_perfil, container, false)
 
-        userMail = v.findViewById(R.id.textView2)
+
         nameText = v.findViewById(R.id.nameTextView)
         lastNameText = v.findViewById(R.id.apeText)
         saveBtn = v.findViewById(R.id.guardarBtn)
@@ -49,7 +49,7 @@ class PerfilFragment : Fragment() {
         nombreText = v.findViewById(R.id.nameInText)
         apellidoText = v.findViewById(R.id.lastInText)
 
-        userMail.text = userMailLogin
+
 
         val docRef = db.collection("users").document(userMailLogin)
 

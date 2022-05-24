@@ -39,7 +39,11 @@
         android:id="@+id/perfilFragment"
         android:name="com.example.proyectofinal.fragments.PerfilFragment"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_perfilFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.proyectofinal.fragments.SettingsFragment"
@@ -58,4 +62,9 @@
         android:name="com.example.proyectofinal.fragments.RecuMailFragment"
         android:label="fragment_recu_mail"
         tools:layout="@layout/fragment_recu_mail" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.proyectofinal.fragments.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>
