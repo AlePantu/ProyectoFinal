@@ -1,33 +1,53 @@
 package com.example.proyectofinal.fragments
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.viewModels
 import com.example.proyectofinal.R
 import com.example.proyectofinal.viewmodels.EditProfileViewModel
 
 class EditProfileFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = EditProfileFragment()
-    }
+   private lateinit var v : View
 
-    private lateinit var viewModel: EditProfileViewModel
+    private val vm : EditProfileViewModel by viewModels()
+
+    private lateinit var saveBtn : Button
+    private lateinit var backBtn : Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_edit_profile, container, false)
+        v = inflater.inflate(R.layout.fragment_edit_profile, container, false)
+
+        saveBtn = v.findViewById(R.id.editBtn)
+        backBtn = v.findViewById(R.id.btnBackP)
+        return v
+    }
+
+
+
+    override fun onStart() {
+        super.onStart()
+
+        vm.showData(v)
+
+        saveBtn.setOnClickListener {
+            vm.saveData(v)
+        }
+
+        backBtn.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

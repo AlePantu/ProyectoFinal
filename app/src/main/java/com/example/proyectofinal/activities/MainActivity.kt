@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(){
                 R.id.loginFragment -> hideBottomBar()
                 R.id.beachFragment -> hideBottomBar()
                 R.id.recuMailFragment -> hideBottomBar()
+                R.id.editProfileFragment -> hideBottomBar()
                 else -> showBottomBar()
             }
 
