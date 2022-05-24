@@ -29,6 +29,7 @@ class LoginFragment : Fragment() {
     private lateinit var pass : TextView
     private lateinit var btnLog : Button
     private lateinit var btnReg : Button
+    private lateinit var btnRecu : Button
     private lateinit var mail : String
 
     private lateinit var v : View
@@ -45,6 +46,7 @@ class LoginFragment : Fragment() {
         pass = v.findViewById(R.id.passText)
         btnLog = v.findViewById(R.id.logBtn)
         btnReg = v.findViewById(R.id.regBtn)
+        btnRecu = v.findViewById(R.id.btnRecuMail)
 
         return v
     }
@@ -87,6 +89,11 @@ class LoginFragment : Fragment() {
                     }
                 }
             }
+        }
+
+        btnRecu.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToRecuMailFragment()
+            v.findNavController().navigate(action)
         }
     }
 

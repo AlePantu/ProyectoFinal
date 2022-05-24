@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(){
             when(destination.id){
                 R.id.loginFragment -> hideBottomBar()
                 R.id.beachFragment -> hideBottomBar()
+                R.id.recuMailFragment -> hideBottomBar()
                 else -> showBottomBar()
             }
 
