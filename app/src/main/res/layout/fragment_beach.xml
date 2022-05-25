@@ -109,7 +109,7 @@
         app:cs_pointer_stroke_width="12dp"
         app:cs_start_angle="180"
         app:cs_use_custom_radii="false"
-        app:layout_constraintEnd_toStartOf="@+id/pcpark"
+        app:layout_constraintEnd_toStartOf="@+id/windVelTV"
         app:layout_constraintStart_toEndOf="@+id/pcaforo"
         app:layout_constraintTop_toBottomOf="@+id/pctemp" />
 
@@ -314,7 +314,8 @@
         android:text="Bandera"
         app:layout_constraintBottom_toTopOf="@+id/flagImage"
         app:layout_constraintEnd_toEndOf="@+id/flagImage"
-        app:layout_constraintStart_toStartOf="@+id/flagImage" />
+        app:layout_constraintStart_toStartOf="@+id/flagImage"
+        app:layout_constraintTop_toBottomOf="@+id/pcaforo" />
 
     <TextView
         android:id="@+id/textView5"
@@ -324,7 +325,8 @@
         android:text="Rayos UV"
         app:layout_constraintBottom_toTopOf="@+id/pcUv"
         app:layout_constraintEnd_toEndOf="@+id/pcUv"
-        app:layout_constraintStart_toStartOf="@+id/pcUv" />
+        app:layout_constraintStart_toStartOf="@+id/pcUv"
+        app:layout_constraintTop_toBottomOf="@+id/pctemp" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -346,5 +348,99 @@
         app:layout_constraintBottom_toBottomOf="@+id/pcUv"
         app:layout_constraintEnd_toEndOf="@+id/pcUv"
         app:layout_constraintStart_toStartOf="@+id/pcUv" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Velocidad"
+        app:layout_constraintEnd_toStartOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="@+id/pcpark"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Direccion"
+        app:layout_constraintEnd_toEndOf="@+id/pcpark"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Viento"
+        app:layout_constraintEnd_toEndOf="@+id/pcpark"
+        app:layout_constraintStart_toStartOf="@+id/pcpark"
+        app:layout_constraintTop_toBottomOf="@+id/pcpark" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/wind"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/windirection"
+        app:layout_constraintEnd_toEndOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/windVelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="windVel"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <TextView
+        android:id="@+id/windDirTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="windDir"
+        app:layout_constraintEnd_toEndOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Altura Olas"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/windVelTV" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/waves"
+        app:layout_constraintEnd_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/windDirTV" />
+
+    <TextView
+        android:id="@+id/altOlasTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

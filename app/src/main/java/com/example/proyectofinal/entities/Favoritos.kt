@@ -6,10 +6,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class Favoritos (
 
-    var name : String,
-    var id : Int,
-    var temp : Float,
-    var aforo : Int
+    //var name : String,
+    var id : Int
 
         ) : Parcelable{
 

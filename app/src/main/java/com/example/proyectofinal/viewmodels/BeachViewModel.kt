@@ -39,6 +39,10 @@ class BeachViewModel : ViewModel() {
     private lateinit var pcUvs : CircularSeekBar
     private lateinit var uvView: TextView
 
+    private lateinit var dirV : TextView
+    private lateinit var velV : TextView
+    private lateinit var altO : TextView
+
     private var aforo : Float = 0F
     private var temp : Float = 0F
     private var park : Float = 0F
@@ -71,6 +75,10 @@ class BeachViewModel : ViewModel() {
         uvView = v.findViewById(R.id.uvRaystextView)
         pcUvs = v.findViewById(R.id.pcUv)
 
+        altO = v.findViewById(R.id.altOlasTV)
+        velV = v.findViewById(R.id.windVelTV)
+        dirV = v.findViewById(R.id.windDirTV)
+
         db.collection("dtis").document(idPlaya).get().addOnSuccessListener {
             pcAforo.max = (it.get("maxAforo").toString()).toFloat()
             pcPark.max = (it.get("maxPark").toString()).toFloat()
@@ -85,6 +93,10 @@ class BeachViewModel : ViewModel() {
             parkView.text = it.get("parking").toString()+" Ocupados"
             bandera = it.get("bandera").toString()
             rayosUv = it.get("uv").toString()
+
+            altO.text = it.get("altOla").toString() + "mts"
+            velV.text = it.get("velViento").toString() + "km/h"
+            dirV.text = it.get("dirViento").toString().uppercase()
 
 
             when(bandera){

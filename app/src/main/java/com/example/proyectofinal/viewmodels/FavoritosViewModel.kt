@@ -13,11 +13,11 @@ class FavoritosViewModel : ViewModel() {
     lateinit var recyclerFavs: RecyclerView
    var db = FirebaseFirestore.getInstance()
 
-    fun populateFavs() {
+   /* fun populateFavs() {
         db.collection("users").document(UserRepository.userMailLogin).get().addOnSuccessListener {
             UserRepository.listOfFavs = it.get("favs") as ArrayList<String>
         }
-    }
+    }*/
 
 
 }
