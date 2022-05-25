@@ -57,14 +57,12 @@ class HomeViewModel : ViewModel() {
             pcPark.max = (it.get("maxPark").toString()).toFloat()
             park = (it.get("parking").toString()).toFloat()
 
-            aforoView.text = it.get("aforo").toString()
+            aforoView.text = it.get("aforo").toString() + " Personas"
             pcAforo.progress = aforo
-            tempView.text = it.get("temperatura").toString()
+            tempView.text = it.get("temperatura").toString()+"°"
             pcTemp.progress = temp
-            parkView.text = it.get("parking").toString()
+            parkView.text = it.get("parking").toString()+" Ocupados"
             pcPark.progress = park
-
-
 
         }
     }
@@ -92,7 +90,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-   fun searchId(playa: String , v: View): String {
+  /* fun searchId(playa: String , v: View): String {
         var id : String=""
         var nombrePlaya = ""
 
@@ -104,16 +102,12 @@ class HomeViewModel : ViewModel() {
                     id = document.get("id").toString()
                 }
             }
-            Thread.sleep(3*1000)
         }
-       Toast.makeText(v.context, id, Toast.LENGTH_SHORT).show()
-
-       Toast.makeText(v.context, id, Toast.LENGTH_SHORT).show()
        return id
 
 
 
-    }
+    }*/
 
 
 }

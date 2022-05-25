@@ -1,5 +1,6 @@
 package com.example.proyectofinal.viewmodels
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.View
 import android.widget.Button
@@ -16,11 +17,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.protobuf.FloatValue
 import me.tankery.lib.circularseekbar.CircularSeekBar
 import kotlin.properties.Delegates
-
+@SuppressLint("StaticFieldLeak")
 class BeachViewModel : ViewModel() {
 
 
     private val db = FirebaseFirestore.getInstance()
+
     private lateinit var nameView : TextView
     private lateinit var pcAforo : CircularSeekBar
     private lateinit var aforoView: TextView
@@ -34,11 +36,16 @@ class BeachViewModel : ViewModel() {
     private lateinit var imageFlag : ImageView
     private lateinit var flagView : TextView
 
+    private lateinit var pcUvs : CircularSeekBar
+    private lateinit var uvView: TextView
+
     private var aforo : Float = 0F
     private var temp : Float = 0F
     private var park : Float = 0F
+    private var uvs : Float = 0F
 
     private lateinit var bandera : String
+    private lateinit var rayosUv : String
 
     private lateinit var bAddToFavs : Button
     private lateinit var bRemoveFavs : Button
@@ -61,18 +68,23 @@ class BeachViewModel : ViewModel() {
         imageFlag = v.findViewById(R.id.flagImage)
         flagView = v.findViewById(R.id.flagTextView)
 
+        uvView = v.findViewById(R.id.uvRaystextView)
+        pcUvs = v.findViewById(R.id.pcUv)
+
         db.collection("dtis").document(idPlaya).get().addOnSuccessListener {
             pcAforo.max = (it.get("maxAforo").toString()).toFloat()
             pcPark.max = (it.get("maxPark").toString()).toFloat()
             aforo = (it.get("aforo").toString()).toFloat()
             temp =  (it.get("temperatura").toString()).toFloat()
             park = (it.get("parking").toString()).toFloat()
+            uvs = (it.get("uv").toString()).toFloat()
 
             nameView.text = it.get("nombre").toString()
-           aforoView.text = it.get("aforo").toString()
-            tempView.text = it.get("temperatura").toString()
-            parkView.text = it.get("parking").toString()
+           aforoView.text = it.get("aforo").toString() + " Personas"
+            tempView.text = it.get("temperatura").toString()+"°"
+            parkView.text = it.get("parking").toString()+" Ocupados"
             bandera = it.get("bandera").toString()
+            rayosUv = it.get("uv").toString()
 
 
             when(bandera){
@@ -101,9 +113,25 @@ class BeachViewModel : ViewModel() {
                     flagView.text = "RAYOS - EVACUAR"
                 }
             }
+
+            when(rayosUv){
+
+                "1" -> uvView.text = "1 - Bajo"
+                "2" -> uvView.text = "2 - Bajo"
+                "3" -> uvView.text = "3 - Moderado"
+                "4" -> uvView.text = "4 - Moderado"
+                "5" -> uvView.text = "5 - Moderado"
+                "6" -> uvView.text = "6 - Alto"
+                "7" -> uvView.text = "7 - Alto"
+                "8" -> uvView.text = "8 - Muy Alto"
+                "9" -> uvView.text = "9 - Muy Alto"
+                "10"-> uvView.text = "10 - Muy Alto"
+
+            }
             pcAforo.progress = aforo
             pcTemp.progress = temp
             pcPark.progress = park
+            pcUvs.progress = uvs
         }
 
 
