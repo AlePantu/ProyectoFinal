@@ -13,6 +13,10 @@ import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.APIService
+import com.example.proyectofinal.entities.Dti
+import com.example.proyectofinal.entities.RestEngine
+import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.userBeachSelect
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.HomeViewModel
@@ -21,6 +25,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.auth.User
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
@@ -38,6 +45,8 @@ class HomeFragment : Fragment() {
     private var dtiDocument : String = "1"
     private lateinit var playa : String
 
+    private var ListDtiNombres = mutableListOf<String>()
+
 
 
 
@@ -45,12 +54,13 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         vm.populateFavs()
+        callServiceGetDti()
 
-        db.collection("dtis").get().addOnSuccessListener { miList ->
+       /* db.collection("dtis").get().addOnSuccessListener { miList ->
             for (dti in miList) {
                 dtiNames.add(dti.get("nombre") as String)
             }
-        }
+        }*/
 
     }
 
@@ -65,7 +75,7 @@ class HomeFragment : Fragment() {
         goBeachButton = v.findViewById(R.id.goBeachBtn)
         listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
 
-        vm.showData(dtiDocument , v)
+        //vm.showData(dtiDocument , v)
         return v
     }
 
@@ -78,21 +88,23 @@ class HomeFragment : Fragment() {
 // Set button as the list popup's anchor
         listPopupWindow.anchorView = listPopupWindowButton
 
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_popup_window_item, dtiNames)
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_popup_window_item, ListDtiNombres)
         listPopupWindow.setAdapter(adapter)
 
 // Set list popup's item click listener
       listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
             // Respond to list popup window item click.
 
-           playa = dtiNames[position]
+          // playa = dtiNames[position]
 
          // Toast.makeText(context, playa, Toast.LENGTH_SHORT).show()
 
      //dtiDocument = vm.searchId(playa , v)
 
-         dtiDocument = (position+1).toString()
-          vm.showData( dtiDocument ,v)
+
+         // vm.showData( dtiDocument ,v)
+          vm.showData2(position , v)
+          dtiDocument = position.toString()
 
             // Dismiss popup.
             listPopupWindow.dismiss()
@@ -108,6 +120,38 @@ class HomeFragment : Fragment() {
             v.findNavController().navigate(action)
 
         }
+    }
+
+    private fun callServiceGetDti() {
+        val dtiService : APIService = RestEngine.getRetrofitDtis().create(APIService::class.java)
+        val result : Call<List<Dti>> = dtiService.getDtiList()
+
+        result.enqueue(object : Callback<List<Dti>> {
+            override fun onResponse(
+                call: Call<List<Dti>>,
+                response: Response<List<Dti>>
+            ) {
+
+                val r = response.body()
+                if (r != null) {
+                    ListDti  = r
+                }
+
+                Toast.makeText(requireContext(), "DTIs Cargados", Toast.LENGTH_SHORT).show()
+                getDtiNames(ListDti)
+            }
+            override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
+                Toast.makeText(requireContext(), "Error en lectura", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun getDtiNames(list: List<Dti>): MutableList<String> {
+
+        for (l in list){
+            ListDtiNombres.addAll(listOf(l.nombre))
+        }
+        return ListDtiNombres
     }
 
 

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.google.firebase.firestore.FieldValue
@@ -57,6 +58,8 @@ class BeachViewModel : ViewModel() {
 
     fun showDataBeach(idPlaya: String, v: View) {
 
+        var posDti = ListDti[idPlaya.toInt()]
+
         nameView = v.findViewById(R.id.nameBeach)
 
         aforoView = v.findViewById(R.id.aforoTextView)
@@ -79,24 +82,24 @@ class BeachViewModel : ViewModel() {
         velV = v.findViewById(R.id.windVelTV)
         dirV = v.findViewById(R.id.windDirTV)
 
-        db.collection("dtis").document(idPlaya).get().addOnSuccessListener {
-            pcAforo.max = (it.get("maxAforo").toString()).toFloat()
-            pcPark.max = (it.get("maxPark").toString()).toFloat()
-            aforo = (it.get("aforo").toString()).toFloat()
-            temp =  (it.get("temperatura").toString()).toFloat()
-            park = (it.get("parking").toString()).toFloat()
-            uvs = (it.get("uv").toString()).toFloat()
 
-            nameView.text = it.get("nombre").toString()
-           aforoView.text = it.get("aforo").toString() + " Personas"
-            tempView.text = it.get("temperatura").toString()+"°"
-            parkView.text = it.get("parking").toString()+" Ocupados"
-            bandera = it.get("bandera").toString()
-            rayosUv = it.get("uv").toString()
+            pcAforo.max = posDti.maxAforo.toFloat()
+            pcPark.max = posDti.maxPark.toFloat()
+            aforo = posDti.aforo.toFloat()
+            temp =  posDti.temperatura.toFloat()
+            park = posDti.parking.toFloat()
+            uvs = posDti.uv.toFloat()
 
-            altO.text = it.get("altOla").toString() + "mts"
-            velV.text = it.get("velViento").toString() + "km/h"
-            dirV.text = it.get("dirViento").toString().uppercase()
+            nameView.text = posDti.nombre
+           aforoView.text = posDti.aforo+ " Personas"
+            tempView.text = posDti.temperatura+"°"
+            parkView.text = posDti.parking+" Ocupados"
+            bandera = posDti.bandera
+            rayosUv = posDti.uv
+
+            altO.text = posDti.altOla+ "mts"
+            velV.text = posDti.velViento + "km/h"
+            dirV.text = posDti.dirViento.uppercase()
 
 
             when(bandera){
@@ -144,7 +147,7 @@ class BeachViewModel : ViewModel() {
             pcTemp.progress = temp
             pcPark.progress = park
             pcUvs.progress = uvs
-        }
+
 
 
     }

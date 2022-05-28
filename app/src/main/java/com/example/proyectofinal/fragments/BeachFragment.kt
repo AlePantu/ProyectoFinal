@@ -51,6 +51,8 @@ class BeachFragment : Fragment() {
 
      idPlaya = BeachFragmentArgs.fromBundle(requireArguments()).dti
 
+
+
       vm.showDataBeach(idPlaya , v)
 
         vm.showButtons(v, idPlaya)

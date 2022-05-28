@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -49,11 +50,14 @@ class FavAdapter(
 
         var fav = listOfFavs[position]
 
+        var dti = ListDti[fav.toInt()]
+        holder.setName(dti.nombre)
 
-        db.collection("dtis").document(fav).get().addOnSuccessListener {
+
+      /*  db.collection("dtis").document(fav).get().addOnSuccessListener {
             nombre = it.get("nombre").toString()
             holder.setName(nombre)
-        }
+        }*/
 
 
         holder.getCard().setOnClickListener{

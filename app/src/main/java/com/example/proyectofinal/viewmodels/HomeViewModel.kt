@@ -5,6 +5,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.google.firebase.firestore.FirebaseFirestore
@@ -34,8 +35,10 @@ class HomeViewModel : ViewModel() {
 
    // private lateinit var nameUser : String
 
+    private val dtiNames = arrayListOf<String>()
 
-    fun showData(dti : String , v : View) {
+
+   /* fun showData(dti : String , v : View) {
 
        beachName = v.findViewById(R.id.nameBeachView)
         aforoView = v.findViewById(R.id.aforoTextView)
@@ -65,7 +68,7 @@ class HomeViewModel : ViewModel() {
             pcPark.progress = park
 
         }
-    }
+    }*/
 
   /*  fun userData(v: View) {
 
@@ -90,7 +93,7 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-  /* fun searchId(playa: String , v: View): String {
+  /*suspend fun searchId(playa: String , v: View): String {
         var id : String=""
         var nombrePlaya = ""
 
@@ -108,6 +111,45 @@ class HomeViewModel : ViewModel() {
 
 
     }*/
+
+    fun showData2(pos: Int, v: View) {
+
+        beachName = v.findViewById(R.id.nameBeachView)
+        aforoView = v.findViewById(R.id.aforoTextView)
+        pcAforo = v.findViewById(R.id.pcaforo)
+
+        tempView = v.findViewById(R.id.tempTextView)
+        pcTemp = v.findViewById(R.id.pctemp)
+
+        parkView = v.findViewById(R.id.parkTextView)
+        pcPark = v.findViewById(R.id.pcpark)
+
+        var dti =  ListDti[pos]
+
+
+        if (dti != null){
+           pcAforo.max = dti.maxAforo.toFloat()
+            beachName.text = dti.nombre
+          aforo = dti.aforo.toFloat()
+         temp =  dti.temperatura.toFloat()
+
+          pcPark.max = dti.maxPark.toFloat()
+         park = dti.parking.toFloat()
+
+          aforoView.text = dti.aforo + " Personas"
+          pcAforo.progress = aforo
+          tempView.text = dti.temperatura+"°"
+         pcTemp.progress = temp
+          parkView.text = dti.parking+" Ocupados"
+          pcPark.progress = park
+
+        } else{
+            beachName.text = "Seleccione una playa"
+        }
+
+
+
+    }
 
 
 }

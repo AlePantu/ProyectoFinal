@@ -13,7 +13,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs.kotlin'
     id 'com.google.gms.google-services'
-
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 
@@ -68,4 +68,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-firestore:24.1.2'
     implementation 'me.tankery.lib:circularSeekBar:1.4.0'
+
+    implementation "com.squareup.picasso:picasso:2.71828"
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.google.code.gson:gson:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.7"
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.7'
+
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 }
