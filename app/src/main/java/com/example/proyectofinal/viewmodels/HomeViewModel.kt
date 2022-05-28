@@ -112,7 +112,7 @@ class HomeViewModel : ViewModel() {
 
     }*/
 
-    fun showData2(pos: Int, v: View) {
+    fun showData(pos: Int, v: View) {
 
         beachName = v.findViewById(R.id.nameBeachView)
         aforoView = v.findViewById(R.id.aforoTextView)

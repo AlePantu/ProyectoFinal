@@ -20,7 +20,7 @@
         app:cs_circle_stroke_width="8dp"
         app:cs_circle_style="butt"
         app:cs_disable_pointer="false"
-        app:cs_disable_progress_glow="false"
+        app:cs_disable_progress_glow="true"
         app:cs_end_angle="0"
         app:cs_hide_progress_when_empty="true"
         app:cs_lock_enabled="true"
@@ -62,7 +62,7 @@
         app:cs_circle_stroke_width="8dp"
         app:cs_circle_style="butt"
         app:cs_disable_pointer="false"
-        app:cs_disable_progress_glow="false"
+        app:cs_disable_progress_glow="true"
         app:cs_end_angle="0"
         app:cs_hide_progress_when_empty="true"
         app:cs_lock_enabled="true"
@@ -89,7 +89,6 @@
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="8dp"
         android:paddingTop="8dp"
         app:cs_circle_color="@android:color/holo_green_dark"
         app:cs_circle_progress_color="@android:color/holo_red_dark"
@@ -109,7 +108,7 @@
         app:cs_pointer_stroke_width="12dp"
         app:cs_start_angle="180"
         app:cs_use_custom_radii="false"
-        app:layout_constraintEnd_toStartOf="@+id/windVelTV"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
         app:layout_constraintStart_toEndOf="@+id/pcaforo"
         app:layout_constraintTop_toBottomOf="@+id/pctemp" />
 
@@ -151,7 +150,7 @@
         app:cs_circle_stroke_width="8dp"
         app:cs_circle_style="butt"
         app:cs_disable_pointer="false"
-        app:cs_disable_progress_glow="false"
+        app:cs_disable_progress_glow="true"
         app:cs_end_angle="0"
         app:cs_hide_progress_when_empty="true"
         app:cs_lock_enabled="true"
@@ -354,8 +353,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Velocidad"
-        app:layout_constraintEnd_toStartOf="@+id/textView16"
+        app:layout_constraintEnd_toStartOf="@+id/textView17"
         app:layout_constraintStart_toStartOf="@+id/pcpark"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -365,7 +365,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Direccion"
-        app:layout_constraintEnd_toEndOf="@+id/pcpark"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <TextView
@@ -401,8 +401,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="windVel"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
         app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <TextView
@@ -420,8 +420,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Altura Olas"
-        app:layout_constraintEnd_toEndOf="@+id/textView15"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="@+id/windVelTV"
+        app:layout_constraintStart_toStartOf="@+id/windVelTV"
         app:layout_constraintTop_toBottomOf="@+id/windVelTV" />
 
     <ImageView

@@ -52,15 +52,8 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         vm.populateFavs()
         callServiceGetDti()
-
-       /* db.collection("dtis").get().addOnSuccessListener { miList ->
-            for (dti in miList) {
-                dtiNames.add(dti.get("nombre") as String)
-            }
-        }*/
 
     }
 
@@ -75,13 +68,18 @@ class HomeFragment : Fragment() {
         goBeachButton = v.findViewById(R.id.goBeachBtn)
         listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
 
-        //vm.showData(dtiDocument , v)
+
+
         return v
+
     }
 
 
     override fun onStart() {
         super.onStart()
+
+
+       // vm.showData(userBeachSelect.toInt(),v)
 
       // vm.userData(v)
 
@@ -95,16 +93,9 @@ class HomeFragment : Fragment() {
       listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
             // Respond to list popup window item click.
 
-          // playa = dtiNames[position]
-
-         // Toast.makeText(context, playa, Toast.LENGTH_SHORT).show()
-
-     //dtiDocument = vm.searchId(playa , v)
-
-
-         // vm.showData( dtiDocument ,v)
-          vm.showData2(position , v)
+          vm.showData(position , v)
           dtiDocument = position.toString()
+          userBeachSelect = position.toString()
 
             // Dismiss popup.
             listPopupWindow.dismiss()
@@ -139,6 +130,7 @@ class HomeFragment : Fragment() {
 
                 Toast.makeText(requireContext(), "DTIs Cargados", Toast.LENGTH_SHORT).show()
                 getDtiNames(ListDti)
+                vm.showData(userBeachSelect.toInt(),v)
             }
             override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
                 Toast.makeText(requireContext(), "Error en lectura", Toast.LENGTH_SHORT).show()

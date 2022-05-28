@@ -53,13 +53,6 @@ class FavAdapter(
         var dti = ListDti[fav.toInt()]
         holder.setName(dti.nombre)
 
-
-      /*  db.collection("dtis").document(fav).get().addOnSuccessListener {
-            nombre = it.get("nombre").toString()
-            holder.setName(nombre)
-        }*/
-
-
         holder.getCard().setOnClickListener{
             onClick(position)
 
