@@ -25,6 +25,12 @@
         <action
             android:id="@+id/action_homeFragment_to_beachFragment"
             app:destination="@id/beachFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_formularioFragment"
+            app:destination="@id/formularioFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_contactoFragment"
+            app:destination="@id/contactoFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritosFragment"
@@ -67,4 +73,14 @@
         android:name="com.example.proyectofinal.fragments.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/formularioFragment"
+        android:name="com.example.proyectofinal.fragments.FormularioFragment"
+        android:label="fragment_formulario"
+        tools:layout="@layout/fragment_formulario" />
+    <fragment
+        android:id="@+id/contactoFragment"
+        android:name="com.example.proyectofinal.fragments.ContactoFragment"
+        android:label="fragment_contacto"
+        tools:layout="@layout/fragment_contacto" />
 </navigation>

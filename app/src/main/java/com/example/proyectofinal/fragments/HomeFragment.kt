@@ -47,6 +47,9 @@ class HomeFragment : Fragment() {
 
     private var ListDtiNombres = mutableListOf<String>()
 
+    private lateinit var goForm : Button
+    private lateinit var goAbout : Button
+
 
 
 
@@ -68,7 +71,8 @@ class HomeFragment : Fragment() {
         goBeachButton = v.findViewById(R.id.goBeachBtn)
         listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
 
-
+        goForm = v.findViewById(R.id.btnForm)
+        goAbout = v.findViewById(R.id.btnAbout)
 
         return v
 
@@ -109,7 +113,17 @@ class HomeFragment : Fragment() {
 
             val action = HomeFragmentDirections.actionHomeFragmentToBeachFragment(dtiDocument)
             v.findNavController().navigate(action)
+        }
 
+        goForm.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToFormularioFragment()
+            v.findNavController().navigate(action)
+
+        }
+
+        goAbout.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToContactoFragment()
+            v.findNavController().navigate(action)
         }
     }
 
