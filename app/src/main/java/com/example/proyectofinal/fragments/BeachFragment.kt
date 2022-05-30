@@ -105,18 +105,15 @@ class BeachFragment : Fragment() {
 
         Toast.makeText(v.context, "MAPS", Toast.LENGTH_SHORT).show()
 
-        var playa = UserRepository.ListDti[idPlaya.toInt()]
-        var latitud = playa.geopoint.latitud
-        var longitud = playa.geopoint.longitud
-        // Create a Uri from an intent string. Use the result to create an Intent.
-        val gmmIntentUri = Uri.parse("geo:"+ latitud+"," +longitud+"?q="+playa.nombre)
+        val playa = UserRepository.ListDti[idPlaya.toInt()]
+        val latitud = playa.geopoint.latitud
+        val longitud = playa.geopoint.longitud
 
-// Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+        val gmmIntentUri = Uri.parse("geo:"+ latitud+"," +longitud+"?q=playa "+playa.nombre)
+
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-// Make the Intent explicit by setting the Google Maps package
         mapIntent.setPackage("com.google.android.apps.maps")
 
-// Attempt to start an activity that can handle the Intent
         startActivity(mapIntent)
 
     }

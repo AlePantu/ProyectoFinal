@@ -29,9 +29,9 @@ class HomeViewModel : ViewModel() {
     private lateinit var pcPark : CircularSeekBar
     private lateinit var parkView: TextView
 
-    private var aforo : Float = 0F
+    private lateinit var aforo : String
     private var temp : Float = 0F
-    private var park : Float = 0F
+    private lateinit var park : String
 
    // private lateinit var nameUser : String
 
@@ -126,25 +126,57 @@ class HomeViewModel : ViewModel() {
 
         var dti =  ListDti[pos]
 
-
-        if (dti != null){
-           pcAforo.max = dti.maxAforo.toFloat()
+           //pcAforo.max = dti.maxAforo.toFloat()
             beachName.text = dti.nombre
-          aforo = dti.aforo.toFloat()
+          aforo = dti.aforo
          temp =  dti.temperatura.toFloat()
 
-          pcPark.max = dti.maxPark.toFloat()
-         park = dti.parking.toFloat()
+          //pcPark.max = dti.maxPark.toFloat()
+         park = dti.parking
 
-          aforoView.text = dti.aforo + " Personas"
-          pcAforo.progress = aforo
+          //aforoView.text = dti.aforo + " Personas"
+         // pcAforo.progress = aforo
           tempView.text = dti.temperatura+"°"
          pcTemp.progress = temp
-          parkView.text = dti.parking+" Ocupados"
-          pcPark.progress = park
+          //parkView.text = dti.parking+" Ocupados"
+         // pcPark.progress = park
 
-        } else{
-            beachName.text = "Seleccione una playa"
+        when(aforo){
+            "bajo"-> {
+                aforoView.text = "Bajo"
+                pcAforo.progress = 25F
+            }
+            "medio"-> {
+                aforoView.text = "Medio"
+                pcAforo.progress = 50F
+            }
+            "alto"-> {
+                aforoView.text = "Alto"
+                pcAforo.progress = 75F
+            }
+            "lleno"-> {
+                aforoView.text = "Lleno"
+                pcAforo.progress = 100F
+            }
+        }
+
+        when(park){
+            "bajo"-> {
+                parkView.text = "Bajo"
+                pcPark.progress = 25F
+            }
+            "medio"-> {
+                parkView.text = "Medio"
+                pcPark.progress = 50F
+            }
+            "alto"-> {
+                parkView.text = "Alto"
+                pcPark.progress = 75F
+            }
+            "lleno"-> {
+                parkView.text = "Lleno"
+                pcPark.progress = 100F
+            }
         }
 
 
