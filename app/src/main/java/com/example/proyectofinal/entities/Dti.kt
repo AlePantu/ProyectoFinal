@@ -9,7 +9,7 @@ data class Dti (
 
     var nombre : String,
     var id : Int,
-    var geopoint : String ,
+    var geopoint :  Geopoint,
     var aforo : String ,
     var altOla : String ,
     var bandera : String ,

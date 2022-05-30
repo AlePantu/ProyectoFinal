@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
     private lateinit var listPopupWindowButton : Button
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
-    private var dtiDocument : String = "1"
+    private var dtiDocument : String = "0"
     private lateinit var playa : String
 
     private var ListDtiNombres = mutableListOf<String>()

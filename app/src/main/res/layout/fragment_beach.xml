@@ -128,15 +128,14 @@
         android:id="@+id/nameBeach"
         android:layout_width="272dp"
         android:layout_height="64dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="16dp"
         android:textSize="48sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.828" />
+        app:layout_constraintVertical_bias="0.72" />
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcpark"
@@ -277,11 +276,12 @@
         android:id="@+id/homeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="28dp"
         android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnAddFavoritos" />
 
     <ImageView
         android:id="@+id/flagImage"
@@ -289,6 +289,7 @@
         android:layout_height="91dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
+        android:clickable="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pcaforo"
         tools:src="@tools:sample/avatars" />
@@ -442,5 +443,27 @@
         app:layout_constraintEnd_toEndOf="@+id/textView18"
         app:layout_constraintStart_toStartOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <ImageView
+        android:id="@+id/btnMap"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:clickable="true"
+        android:src="@drawable/googlemaps"
+        app:layout_constraintBottom_toBottomOf="@+id/nameBeach"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/nameBeach"
+        app:layout_constraintTop_toTopOf="@+id/nameBeach" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Ver en Mapa"
+        app:layout_constraintBottom_toTopOf="@+id/btnMap"
+        app:layout_constraintEnd_toEndOf="@+id/btnMap"
+        app:layout_constraintStart_toStartOf="@+id/btnMap" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -83,6 +83,7 @@ class FormularioFragment : Fragment() {
             //Activar formulario
            // vm.saveForm(v, dtiSelected)
             Toast.makeText(requireContext(),"Formulario enviado - Gracias", Toast.LENGTH_SHORT).show()
+            activity?.onBackPressed()
         }
 
     }
