@@ -10,8 +10,8 @@
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcaforo"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -51,8 +51,8 @@
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pctemp"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
@@ -84,8 +84,8 @@
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcUv"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
@@ -108,8 +108,8 @@
         app:cs_pointer_stroke_width="12dp"
         app:cs_start_angle="180"
         app:cs_use_custom_radii="false"
-        app:layout_constraintEnd_toStartOf="@+id/textView18"
-        app:layout_constraintStart_toEndOf="@+id/pcaforo"
+        app:layout_constraintEnd_toEndOf="@+id/pctemp"
+        app:layout_constraintStart_toStartOf="@+id/pctemp"
         app:layout_constraintTop_toBottomOf="@+id/pctemp" />
 
     <TextView
@@ -139,8 +139,8 @@
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcpark"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
@@ -186,6 +186,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-black"
         android:text="Aforo"
         app:layout_constraintBottom_toTopOf="@+id/pcaforo"
         app:layout_constraintEnd_toEndOf="@+id/pcaforo"
@@ -196,6 +197,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-black"
         android:text="Temperatura"
         app:layout_constraintBottom_toTopOf="@+id/pctemp"
         app:layout_constraintEnd_toEndOf="@+id/pctemp"
@@ -207,6 +209,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-black"
         android:text="Parking"
         app:layout_constraintBottom_toTopOf="@+id/pcpark"
         app:layout_constraintEnd_toEndOf="@+id/pcpark"
@@ -319,6 +322,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-black"
         android:text="Bandera"
         app:layout_constraintBottom_toTopOf="@+id/flagImage"
         app:layout_constraintEnd_toEndOf="@+id/flagImage"
@@ -330,6 +334,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-black"
         android:text="Rayos UV"
         app:layout_constraintBottom_toTopOf="@+id/pcUv"
         app:layout_constraintEnd_toEndOf="@+id/pcUv"
@@ -365,6 +370,7 @@
         android:layout_marginEnd="8dp"
         android:text="Velocidad"
         app:layout_constraintEnd_toStartOf="@+id/textView17"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/pcpark"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -382,6 +388,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-black"
         android:text="Viento"
         app:layout_constraintEnd_toEndOf="@+id/pcpark"
         app:layout_constraintStart_toStartOf="@+id/pcpark"
