@@ -2,8 +2,10 @@ package com.example.proyectofinal.fragments
 
 
 import android.content.Context
+import android.location.Location
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -17,7 +19,10 @@ import com.example.proyectofinal.entities.APIService
 import com.example.proyectofinal.entities.Dti
 import com.example.proyectofinal.entities.RestEngine
 import com.example.proyectofinal.entities.UserRepository.ListDti
+import com.example.proyectofinal.entities.UserRepository.ListDtiNombres
 import com.example.proyectofinal.entities.UserRepository.userBeachSelect
+import com.example.proyectofinal.entities.UserRepository.userLatitud
+import com.example.proyectofinal.entities.UserRepository.userLongitud
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.HomeViewModel
 import com.google.android.gms.maps.MapView
@@ -25,6 +30,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.auth.User
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,29 +41,20 @@ class HomeFragment : Fragment() {
 
     private lateinit var v : View
     private val vm : HomeViewModel by viewModels()
-
-    private val db = FirebaseFirestore.getInstance()
-    private var dtiNames  = arrayListOf<String>()
-    private lateinit var mapBeach : MapView
     private lateinit var listPopupWindowButton : Button
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
     private var dtiDocument : String = "0"
-    private lateinit var playa : String
-
-    private var ListDtiNombres = mutableListOf<String>()
-
     private lateinit var goForm : Button
     private lateinit var goAbout : Button
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        vm.populateFavs()
-        callServiceGetDti()
 
+        GlobalScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) { vm.populateFavs() }
+        }
     }
 
     override fun onCreateView(
@@ -75,28 +72,25 @@ class HomeFragment : Fragment() {
         goAbout = v.findViewById(R.id.btnAbout)
 
         return v
-
     }
 
 
     override fun onStart() {
         super.onStart()
 
+        //Nos va a mostrar el DTI que se encuentra mas cerca a nuestra posicion por Geolocalizacion
+        dtiCercano()
 
-       // vm.showData(userBeachSelect.toInt(),v)
-
-      // vm.userData(v)
-
-// Set button as the list popup's anchor
+        // Ajusta el boton de la lista
         listPopupWindow.anchorView = listPopupWindowButton
 
         val adapter = ArrayAdapter(requireContext(), R.layout.list_popup_window_item, ListDtiNombres)
         listPopupWindow.setAdapter(adapter)
 
-// Set list popup's item click listener
+        //El Listener cuando elegimos una opcion
       listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
-            // Respond to list popup window item click.
 
+          //Responde cuando elegimos un boton de la lista
           vm.showData(position , v)
           dtiDocument = position.toString()
           userBeachSelect = position.toString()
@@ -105,7 +99,7 @@ class HomeFragment : Fragment() {
             listPopupWindow.dismiss()
              }
 
-// Show list popup window on button click.
+            // Muestra la lista
             listPopupWindowButton.setOnClickListener { listPopupWindow.show() }
 
 
@@ -125,39 +119,37 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections.actionHomeFragmentToContactoFragment()
             v.findNavController().navigate(action)
         }
+
     }
 
-    private fun callServiceGetDti() {
-        val dtiService : APIService = RestEngine.getRetrofitDtis().create(APIService::class.java)
-        val result : Call<List<Dti>> = dtiService.getDtiList()
+    private  fun dtiCercano(){
 
-        result.enqueue(object : Callback<List<Dti>> {
-            override fun onResponse(
-                call: Call<List<Dti>>,
-                response: Response<List<Dti>>
-            ) {
+        var dtiCerca = 0
+        var distEntreDTIyUser = 9999999999999999F
+        var position = 0
 
-                val r = response.body()
-                if (r != null) {
-                    ListDti  = r
-                }
+        for (dti in ListDti){
 
-                Toast.makeText(requireContext(), "DTIs Cargados", Toast.LENGTH_SHORT).show()
-                getDtiNames(ListDti)
-                vm.showData(userBeachSelect.toInt(),v)
+            val locationA = Location("punto A")
+
+            locationA.latitude = userLatitud.toDouble()
+            locationA.longitude = userLongitud.toDouble()
+
+            val locationB = Location("punto B")
+
+            locationB.latitude = dti.geopoint.latitud.toDouble()
+            locationB.longitude = dti.geopoint.longitud.toDouble()
+
+            val distance = locationA.distanceTo(locationB)
+
+            if (distance < distEntreDTIyUser ){
+                dtiCerca = position
+                distEntreDTIyUser = distance
             }
-            override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
-                Toast.makeText(requireContext(), "Error en lectura", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    fun getDtiNames(list: List<Dti>): MutableList<String> {
-
-        for (l in list){
-            ListDtiNombres.addAll(listOf(l.nombre))
+            position++
         }
-        return ListDtiNombres
+        dtiDocument = dtiCerca.toString()
+       vm.showData(dtiCerca , v)
     }
 
 

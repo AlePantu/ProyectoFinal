@@ -126,8 +126,8 @@
 
     <TextView
         android:id="@+id/nameBeach"
-        android:layout_width="272dp"
-        android:layout_height="64dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="16dp"
         android:textSize="48sp"
