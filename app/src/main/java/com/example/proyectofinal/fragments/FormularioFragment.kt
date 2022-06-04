@@ -50,16 +50,17 @@ class FormularioFragment : Fragment() {
     private lateinit var bSave : Button
 
 
-    private lateinit var condicionE : String
-    private lateinit var transporteE : String
-    private lateinit var familiaE : String
-    private lateinit var provinciaE : String
-    private lateinit var diasE : String
+    private  var condicionE =""
+    private  var transporteE =""
+    private  var familiaE =""
+    private  var provinciaE =""
+    private  var diasE =""
+    private  var dtiSelected =""
 
-   // private lateinit var bBack : Button
+    // private lateinit var bBack : Button
 
 
-    private lateinit var dtiSelected : String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -273,8 +274,8 @@ class FormularioFragment : Fragment() {
     private fun formOk(): Boolean {
 
             var ok = false
-        if(!dtiSelected.isBlank() && !condicionE.isBlank() && !transporteE.isBlank()
-            && !familiaE.isBlank() && !provinciaE.isBlank() && !diasE.isBlank()){
+        if(dtiSelected.isNotBlank() && condicionE.isNotBlank() && transporteE.isNotBlank()
+            && familiaE.isNotBlank()  && provinciaE.isNotBlank()  && diasE.isNotBlank() ){
 
             ok = true
         }
