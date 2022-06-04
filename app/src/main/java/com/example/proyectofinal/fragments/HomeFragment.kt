@@ -78,8 +78,13 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
+        if(!userLatitud.isBlank() && !userLongitud.isBlank()){
         //Nos va a mostrar el DTI que se encuentra mas cerca a nuestra posicion por Geolocalizacion
-        dtiCercano()
+        dtiCercano()}
+        else {
+            vm.showData(dtiDocument.toInt() ,v )
+            Toast.makeText(context , "No tiene activado Geolocalizacion" , Toast.LENGTH_SHORT).show()
+        }
 
         // Ajusta el boton de la lista
         listPopupWindow.anchorView = listPopupWindowButton

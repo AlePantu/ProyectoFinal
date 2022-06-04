@@ -26,11 +26,7 @@ class BeachFragment : Fragment() {
     private lateinit var v : View
 
     private val vm: BeachViewModel by viewModels()
-
-    private lateinit var btnHome : Button
-
     private lateinit var idPlaya : String
-
     private lateinit var bAddToFav : Button
     private lateinit var bRemoveFav : Button
     private lateinit var btnMap : ImageView
@@ -44,7 +40,6 @@ class BeachFragment : Fragment() {
     ): View? {
         v = inflater.inflate(R.layout.fragment_beach, container, false)
 
-        btnHome = v.findViewById(R.id.homeBtn)
         bAddToFav = v.findViewById(R.id.btnAddFavoritos)
         bRemoveFav = v.findViewById(R.id.btnRemoveFavoritos)
         btnMap = v.findViewById(R.id.btnMap)
@@ -87,11 +82,6 @@ class BeachFragment : Fragment() {
             }
         }
 
-
-      btnHome.setOnClickListener {
-
-          activity?.onBackPressed()
-      }
 
         btnMap.setOnClickListener {
             goMap(idPlaya , v )

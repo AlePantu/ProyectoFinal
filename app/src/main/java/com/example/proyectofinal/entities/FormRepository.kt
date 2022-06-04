@@ -24,7 +24,7 @@ object FormRepository {
         familia.add("En Pareja")
         familia.add("En Familia")
         familia.add("Con Amigos")
-        familia.add("Con Otro")
+        familia.add("Otro")
 
         provincia.add("Buenos Aires")
         provincia.add("CABA")
