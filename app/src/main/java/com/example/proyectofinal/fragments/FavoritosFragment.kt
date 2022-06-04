@@ -12,6 +12,10 @@ import com.example.proyectofinal.R
 import com.example.proyectofinal.adapter.FavAdapter
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
 import com.example.proyectofinal.viewmodels.FavoritosViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 @Suppress("DEPRECATION")
 class FavoritosFragment : Fragment() {
@@ -22,18 +26,26 @@ class FavoritosFragment : Fragment() {
     lateinit var adapter: FavAdapter
     private lateinit var pos : String
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         v = inflater.inflate(R.layout.fragment_favoritos, container, false)
+
+
+
         vm.recyclerFavs = v.findViewById(R.id.recFav)
+
+
 
         return v
     }
 
     override fun onStart() {
         super.onStart()
+
         vm.recyclerFavs.setHasFixedSize(true)
         vm.recyclerFavs.layoutManager = LinearLayoutManager(context)
 

@@ -233,11 +233,13 @@ class BeachViewModel : ViewModel() {
     fun removeFavorite(x: String) {
         var favoritos = db.collection("users").document(userMailLogin)
         favoritos.update("favs", FieldValue.arrayRemove(x))
+        listOfFavs.remove(listOfFavs.find { f -> f == x })
     }
 
     fun addFavotite(x: String) {
         var favoritos = db.collection("users").document(userMailLogin)
         favoritos.update("favs", FieldValue.arrayUnion(x))
+        listOfFavs.add(x)
 
     }
 

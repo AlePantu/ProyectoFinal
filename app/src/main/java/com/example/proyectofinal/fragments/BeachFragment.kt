@@ -81,6 +81,7 @@ class BeachFragment : Fragment() {
             if(vm.esFavorito(idPlaya)){
                 vm.removeFavorite(idPlaya)
                 vm.favRemoved(v, requireContext())
+                activity?.onBackPressed()
             }else{
                 vm.dtiNotInList(v, requireContext())
             }

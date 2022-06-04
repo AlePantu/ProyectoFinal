@@ -8,16 +8,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class FavoritosViewModel : ViewModel() {
 
- var repository : FavRepository = FavRepository()
-  var favoritos = repository.favList
-    lateinit var recyclerFavs: RecyclerView
-   var db = FirebaseFirestore.getInstance()
 
-   /* fun populateFavs() {
-        db.collection("users").document(UserRepository.userMailLogin).get().addOnSuccessListener {
-            UserRepository.listOfFavs = it.get("favs") as ArrayList<String>
-        }
-    }*/
+    var repository : FavRepository = FavRepository()
+    var favoritos = repository.favList
+    lateinit var recyclerFavs: RecyclerView
+     var db = FirebaseFirestore.getInstance()
 
 
 }
