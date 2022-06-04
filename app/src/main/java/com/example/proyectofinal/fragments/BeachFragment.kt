@@ -91,14 +91,10 @@ class BeachFragment : Fragment() {
       btnHome.setOnClickListener {
 
           activity?.onBackPressed()
-
-          /*val action = BeachFragmentDirections.actionBeachFragmentToHomeFragment()
-          v.findNavController().navigate(action)*/
       }
 
         btnMap.setOnClickListener {
-
-           goMap(idPlaya , v )
+            goMap(idPlaya , v )
         }
 
     }
