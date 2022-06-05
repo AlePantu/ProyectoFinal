@@ -82,8 +82,11 @@ class LoginFragment : Fragment() {
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {
                         userMailLogin = email.text.toString()
+
                         val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
                         v.findNavController().navigate(action)
+                        email.text =""
+                        pass.text =""
                     } else {
                         vm.loginFail(v)
                     }

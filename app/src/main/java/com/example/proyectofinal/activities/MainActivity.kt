@@ -116,8 +116,6 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     fun getLastLocation() {
         if (checkPermissions()) {
             if (isLocationEnabled()) {
-
-
                 mFusedLocationClient.lastLocation.addOnCompleteListener(this) { task ->
                     val location: Location? = task.result
                     if (location == null) {
@@ -125,15 +123,10 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                     } else {
                             userLatitud = location.latitude.toString()
                             userLongitud = location.longitude.toString()
-                        Log.d ("TestLatitud",location.latitude.toString())
-                        Log.d ("TestLongitud",location.longitude.toString())
-
-//                        findViewById<TextView>(R.id.latTextView).text = location.latitude.toString()
-//                        findViewById<TextView>(R.id.lonTextView).text = location.longitude.toString()
+                        Log.d ("Test Latitud",location.latitude.toString())
+                        Log.d ("Test Longitud",location.longitude.toString())
                     }
                 }
-
-
             } else {
                 Toast.makeText(this, "Turn on location", Toast.LENGTH_LONG).show()
                 val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
@@ -163,8 +156,6 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             var mLastLocation: Location = locationResult.lastLocation
             Log.d ("Test",mLastLocation.latitude.toString())
             Log.d ("Test",mLastLocation.longitude.toString())
-//            findViewById<TextView>(R.id.latTextView).text = mLastLocation.latitude.toString()
-//            findViewById<TextView>(R.id.lonTextView).text = mLastLocation.longitude.toString()
         }
     }
 
@@ -222,12 +213,9 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                 if (r != null) {
                     UserRepository.ListDti = r
                 }
-
-              //  Toast.makeText(this, "DTIs Cargados", Toast.LENGTH_SHORT).show()
                 getDtiNames(UserRepository.ListDti)
             }
             override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
-              //  Toast.makeText(this, "Error en lectura", Toast.LENGTH_SHORT).show()
             }
         })
     }

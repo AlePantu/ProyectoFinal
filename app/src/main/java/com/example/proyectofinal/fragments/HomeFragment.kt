@@ -1,39 +1,25 @@
 package com.example.proyectofinal.fragments
 
 
-import android.content.Context
-import android.location.Location
-import androidx.lifecycle.ViewModelProvider
+import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.proyectofinal.R
-import com.example.proyectofinal.entities.APIService
-import com.example.proyectofinal.entities.Dti
-import com.example.proyectofinal.entities.RestEngine
-import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.ListDtiNombres
+import com.example.proyectofinal.entities.UserRepository.dtiDocument
 import com.example.proyectofinal.entities.UserRepository.userBeachSelect
 import com.example.proyectofinal.entities.UserRepository.userLatitud
 import com.example.proyectofinal.entities.UserRepository.userLongitud
-import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.example.proyectofinal.viewmodels.HomeViewModel
-import com.google.android.gms.maps.MapView
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.auth.User
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
@@ -44,9 +30,10 @@ class HomeFragment : Fragment() {
     private lateinit var listPopupWindowButton : Button
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
-    private var dtiDocument : String = "0"
+    //private var dtiDocument : String = "0"
     private lateinit var goForm : Button
     private lateinit var goAbout : Button
+    private lateinit var bOut : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +57,7 @@ class HomeFragment : Fragment() {
 
         goForm = v.findViewById(R.id.btnForm)
         goAbout = v.findViewById(R.id.btnAbout)
+        bOut = v.findViewById(R.id.btnLogout)
 
         return v
     }
@@ -80,7 +68,7 @@ class HomeFragment : Fragment() {
 
         if(!userLatitud.isBlank() && !userLongitud.isBlank()){
         //Nos va a mostrar el DTI que se encuentra mas cerca a nuestra posicion por Geolocalizacion
-        dtiCercano()}
+        vm.dtiCercano(v)}
         else {
             vm.showData(dtiDocument.toInt() ,v )
             Toast.makeText(context , "No tiene activado Geolocalizacion" , Toast.LENGTH_SHORT).show()
@@ -125,37 +113,42 @@ class HomeFragment : Fragment() {
             v.findNavController().navigate(action)
         }
 
-    }
+        bOut.setOnClickListener {
 
-    private  fun dtiCercano(){
+            AlertDialog.Builder(requireContext())
+                .setMessage("Cerrar Sesión?")
+                .setCancelable(false)
+                .setPositiveButton("Aceptar") { dialog, whichButton ->
 
-        var dtiCerca = 0
-        var distEntreDTIyUser = 9999999999999999F
-        var position = 0
+                    FirebaseAuth.getInstance().signOut()
+                    vm.cleanLogUser()
+                    activity?.finish()
 
-        for (dti in ListDti){
+                }
+                .setNegativeButton("Cancelar") { dialog, whichButton ->
 
-            val locationA = Location("punto A")
-
-            locationA.latitude = userLatitud.toDouble()
-            locationA.longitude = userLongitud.toDouble()
-
-            val locationB = Location("punto B")
-
-            locationB.latitude = dti.geopoint.latitud.toDouble()
-            locationB.longitude = dti.geopoint.longitud.toDouble()
-
-            val distance = locationA.distanceTo(locationB)
-
-            if (distance < distEntreDTIyUser ){
-                dtiCerca = position
-                distEntreDTIyUser = distance
-            }
-            position++
+                }
+                .show()
         }
-        dtiDocument = dtiCerca.toString()
-       vm.showData(dtiCerca , v)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            AlertDialog.Builder(requireContext())
+                .setMessage("Cerrar Sesión?")
+                .setCancelable(false)
+                .setPositiveButton("Aceptar") { dialog, whichButton ->
+                    FirebaseAuth.getInstance().signOut()
+                    vm.cleanLogUser()
+                    activity?.finish()
+                }
+                .setNegativeButton("Cancelar") { dialog, whichButton ->
+
+                }
+                .show()
+        }
+
     }
+
+
 
 
 }

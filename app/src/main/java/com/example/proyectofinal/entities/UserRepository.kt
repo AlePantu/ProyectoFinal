@@ -11,6 +11,7 @@ object UserRepository {
     public var userLatitud =""
     public var userLongitud =""
     public var ListDtiNombres : MutableList<String> = mutableListOf()
+    public var dtiDocument : String = "0"
 
 
 

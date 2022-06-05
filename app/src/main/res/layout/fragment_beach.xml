@@ -126,8 +126,8 @@
 
     <TextView
         android:id="@+id/nameBeach"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_width="290dp"
+        android:layout_height="61dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="16dp"
         android:textSize="48sp"
@@ -135,7 +135,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.712" />
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcpark"
@@ -255,20 +255,26 @@
 
     <Button
         android:id="@+id/btnAddFavoritos"
-        android:layout_width="231dp"
+        android:layout_width="299dp"
         android:layout_height="43dp"
         android:text="Agregar a Favoritos"
+        app:icon="@drawable/favorite"
+        app:iconSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space2" />
 
     <Button
         android:id="@+id/btnRemoveFavoritos"
-        android:layout_width="231dp"
-        android:layout_height="43dp"
+        android:layout_width="296dp"
+        android:layout_height="44dp"
         android:text="Eliminar de Favoritos"
+        app:icon="@drawable/remove"
+        app:iconGravity="start"
+        app:iconPadding="0dp"
+        app:iconSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnAddFavoritos" />
 
@@ -449,8 +455,8 @@
 
     <ImageView
         android:id="@+id/btnMap"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
+        android:layout_width="55dp"
+        android:layout_height="46dp"
         android:layout_marginEnd="24dp"
         android:clickable="true"
         android:src="@drawable/googlemaps"
@@ -468,5 +474,25 @@
         app:layout_constraintBottom_toTopOf="@+id/btnMap"
         app:layout_constraintEnd_toEndOf="@+id/btnMap"
         app:layout_constraintStart_toStartOf="@+id/btnMap" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="82dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ciudades"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnAddFavoritos" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="113dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/reddti"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnAddFavoritos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

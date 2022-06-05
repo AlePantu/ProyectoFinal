@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1275" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/crowd.xml" value="0.3295" />
+        <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/favorite.xml" value="0.253" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/googleMaps.xml" value="0.205" />
+        <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/googlemaps.xml" value="0.2205" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1275" />
+        <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/logout.xml" value="0.236" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/outline_local_parking_24.xml" value="0.349" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/parking.xml" value="0.3295" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/splashscreen.xml" value="0.324" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/sun.xml" value="0.3295" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/temp.xml" value="0.3295" />
+        <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/visibility_off.xml" value="0.253" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/waves.xml" value="0.3295" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/wind.xml" value="0.3295" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/windirection.xml" value="0.3295" />
@@ -24,7 +28,7 @@
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/fragment_formulario.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/fragment_login.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/fragment_perfil.xml" value="0.34739583333333335" />
+        <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/fragment_perfil.xml" value="0.536" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/fragment_recu_mail.xml" value="0.34739583333333335" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/item_favoritos.xml" value="0.3463541666666667" />
         <entry key="..\:/Users/alepa/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/list_popup_window_item.xml" value="0.2548611111111111" />

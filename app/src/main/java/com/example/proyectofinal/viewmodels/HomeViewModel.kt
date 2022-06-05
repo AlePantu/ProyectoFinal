@@ -1,12 +1,15 @@
 package com.example.proyectofinal.viewmodels
 
+import android.location.Location
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.graphics.toColor
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.UserRepository
 import com.example.proyectofinal.entities.UserRepository.ListDti
+import com.example.proyectofinal.entities.UserRepository.dtiDocument
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
 import com.google.firebase.firestore.FirebaseFirestore
@@ -34,6 +37,8 @@ class HomeViewModel : ViewModel() {
     private lateinit var park : String
 
     private val dtiNames = arrayListOf<String>()
+
+
 
     fun populateFavs() {
         db.collection("users").document(userMailLogin).get().addOnSuccessListener {
@@ -108,6 +113,40 @@ class HomeViewModel : ViewModel() {
 
 
 
+    }
+
+    fun cleanLogUser() {
+        userMailLogin = ""
+    }
+
+        fun dtiCercano(v : View){
+
+        var dtiCerca = 0
+        var distEntreDTIyUser = 9999999999999999F
+        var position = 0
+
+        for (dti in ListDti){
+
+            val locationA = Location("punto A")
+
+            locationA.latitude = UserRepository.userLatitud.toDouble()
+            locationA.longitude = UserRepository.userLongitud.toDouble()
+
+            val locationB = Location("punto B")
+
+            locationB.latitude = dti.geopoint.latitud.toDouble()
+            locationB.longitude = dti.geopoint.longitud.toDouble()
+
+            val distance = locationA.distanceTo(locationB)
+
+            if (distance < distEntreDTIyUser ){
+                dtiCerca = position
+                distEntreDTIyUser = distance
+            }
+            position++
+        }
+        dtiDocument = dtiCerca.toString()
+        showData(dtiCerca , v )
     }
 
 
