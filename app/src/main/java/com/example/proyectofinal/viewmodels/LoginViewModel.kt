@@ -16,7 +16,9 @@ class LoginViewModel : ViewModel() {
 
         db.collection("users").document(userMailLogin).set(
             hashMapOf(
-                "favs" to mutableListOf<Favoritos>()
+                "favs" to mutableListOf<Favoritos>(),
+                "notif" to false,
+                "info" to false
             ))
 
         Snackbar.make(v, "Registro exitoso, inicie sesion", Snackbar.LENGTH_SHORT).show()

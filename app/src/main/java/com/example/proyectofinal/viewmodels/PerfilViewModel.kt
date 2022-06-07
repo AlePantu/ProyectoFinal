@@ -2,11 +2,13 @@ package com.example.proyectofinal.viewmodels
 
 import android.view.View
 import android.widget.Button
+import android.widget.Switch
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlin.properties.Delegates
 
 class PerfilViewModel : ViewModel() {
 
@@ -22,6 +24,12 @@ class PerfilViewModel : ViewModel() {
     private lateinit var tel : String
     private lateinit var prov : String
     private lateinit var ciu : String
+    private var info by Delegates.notNull<Boolean>()
+    private var notif by Delegates.notNull<Boolean>()
+
+
+    private lateinit var switchNotif : Switch
+    private lateinit var switchInfo : Switch
 
     fun showData(v: View) {
 
@@ -30,6 +38,10 @@ class PerfilViewModel : ViewModel() {
         telText = v.findViewById(R.id.telEdit2)
         provText = v.findViewById(R.id.provEdit2)
         cityText = v.findViewById(R.id.cityEdit2)
+
+
+        switchNotif = v.findViewById(R.id.switchNotif)
+        switchInfo = v.findViewById(R.id.switchCompInfo)
 
         val docRef = db.collection("users").document(UserRepository.userMailLogin)
 
@@ -41,6 +53,17 @@ class PerfilViewModel : ViewModel() {
                 tel = document.result.get("telefono").toString()
                 prov = document.result.get("provincia").toString()
                 ciu = document.result.get("ciudad").toString()
+                info = document.result.get("info") as Boolean
+                notif = document.result.get("notif") as Boolean
+
+
+                if(info){
+                    switchInfo.toggle()
+                }
+
+                if(notif){
+                    switchNotif.toggle()
+                }
 
                 if (name != "null"){
                     nameText.text = name
