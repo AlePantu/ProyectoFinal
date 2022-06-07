@@ -96,4 +96,8 @@ class PerfilViewModel : ViewModel() {
 
     }
 
+    fun cleanLogUser() {
+        UserRepository.userMailLogin = ""
+    }
+
 }

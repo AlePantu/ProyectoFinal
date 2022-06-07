@@ -20,8 +20,8 @@
         />
 
     <item
-        android:title="Setting"
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/settings"
+        android:title="Contacto"
+        android:id="@+id/contactoFragment"
+        android:icon="@drawable/contact"
         />
 </menu>

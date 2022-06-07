@@ -9,42 +9,46 @@
 
     <Button
         android:id="@+id/btnCiudades"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="188dp"
+        android:layout_height="58dp"
         android:layout_marginTop="16dp"
         android:text="Ciudades del Futuro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnForm"
         app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="208dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="181dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="36dp"
         android:src="@drawable/ciudades"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView13"
-        android:layout_width="206dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/reddti"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCiudades" />
+        app:layout_constraintEnd_toEndOf="@+id/btnReddit"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toEndOf="@+id/imageView12"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnReddit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="152dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="16dp"
         android:text="Red de destinos DTI"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnForm"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toEndOf="@+id/imageView12"
         app:layout_constraintTop_toBottomOf="@+id/imageView13" />
 
     <Button
@@ -54,7 +58,7 @@
         android:layout_marginTop="8dp"
         android:text="Envianos un tu consulta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/consTextView" />
 
@@ -62,11 +66,24 @@
         android:id="@+id/consTextView"
         android:layout_width="328dp"
         android:layout_height="104dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Tu consulta"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReddit" />
+        app:layout_constraintTop_toBottomOf="@+id/btnForm" />
+
+    <Button
+        android:id="@+id/btnForm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Formulario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCiudades" />
 </androidx.constraintlayout.widget.ConstraintLayout>

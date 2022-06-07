@@ -7,6 +7,9 @@ import com.example.proyectofinal.entities.UserRepository
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FavoritosViewModel : ViewModel() {
+    fun cleanLogUser() {
+        UserRepository.userMailLogin = ""
+    }
 
 
     var repository : FavRepository = FavRepository()

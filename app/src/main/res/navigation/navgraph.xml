@@ -26,9 +26,6 @@
             android:id="@+id/action_homeFragment_to_beachFragment"
             app:destination="@id/beachFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_formularioFragment"
-            app:destination="@id/formularioFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_contactoFragment"
             app:destination="@id/contactoFragment" />
     </fragment>
@@ -85,5 +82,9 @@
         android:id="@+id/contactoFragment"
         android:name="com.example.proyectofinal.fragments.ContactoFragment"
         android:label="fragment_contacto"
-        tools:layout="@layout/fragment_contacto" />
+        tools:layout="@layout/fragment_contacto" >
+        <action
+            android:id="@+id/action_contactoFragment_to_formularioFragment"
+            app:destination="@id/formularioFragment" />
+    </fragment>
 </navigation>

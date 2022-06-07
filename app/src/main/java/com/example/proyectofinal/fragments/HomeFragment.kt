@@ -12,6 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.proyectofinal.R
+import com.example.proyectofinal.entities.APIService
+import com.example.proyectofinal.entities.Dti
+import com.example.proyectofinal.entities.RestEngine
+import com.example.proyectofinal.entities.UserRepository
 import com.example.proyectofinal.entities.UserRepository.ListDtiNombres
 import com.example.proyectofinal.entities.UserRepository.dtiDocument
 import com.example.proyectofinal.entities.UserRepository.userBeachSelect
@@ -20,6 +24,9 @@ import com.example.proyectofinal.entities.UserRepository.userLongitud
 import com.example.proyectofinal.viewmodels.HomeViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
@@ -30,8 +37,10 @@ class HomeFragment : Fragment() {
     private lateinit var listPopupWindowButton : Button
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
-    private lateinit var goForm : Button
-    private lateinit var goAbout : Button
+
+
+
+
     private lateinit var bOut : Button
 
 
@@ -54,8 +63,9 @@ class HomeFragment : Fragment() {
         goBeachButton = v.findViewById(R.id.goBeachBtn)
         listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
 
-        goForm = v.findViewById(R.id.btnForm)
-        goAbout = v.findViewById(R.id.btnAbout)
+
+
+
         bOut = v.findViewById(R.id.btnLogout)
 
         return v
@@ -101,16 +111,7 @@ class HomeFragment : Fragment() {
             v.findNavController().navigate(action)
         }
 
-        goForm.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToFormularioFragment()
-            v.findNavController().navigate(action)
 
-        }
-
-        goAbout.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToContactoFragment()
-            v.findNavController().navigate(action)
-        }
 
         bOut.setOnClickListener {
 
@@ -130,6 +131,8 @@ class HomeFragment : Fragment() {
                 .show()
         }
 
+
+
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
             AlertDialog.Builder(requireContext())
                 .setMessage("Cerrar Aplicacion?")
@@ -146,6 +149,7 @@ class HomeFragment : Fragment() {
         }
 
     }
+
 
 
 

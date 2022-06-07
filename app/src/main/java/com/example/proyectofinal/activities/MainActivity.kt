@@ -36,7 +36,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavView : BottomNavigationView
     private lateinit var navHostFragment: NavHostFragment
@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
-            .registerOnSharedPreferenceChangeListener(this)
+       /* androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
+            .registerOnSharedPreferenceChangeListener(this)*/
 
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_login) as NavHostFragment
         bottomNavView = findViewById(R.id.bottom_bar)
@@ -62,7 +62,6 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                 R.id.recuMailFragment -> hideBottomBar()
                 R.id.editProfileFragment -> hideBottomBar()
                 R.id.formularioFragment -> hideBottomBar()
-                R.id.contactoFragment -> hideBottomBar()
                 else -> showBottomBar()
             }
 
@@ -78,29 +77,6 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if (key == "dark_mode"){
-            val prefs = sharedPreferences?.getString(key, "1")
-
-            when(prefs?.toInt()){
-                1 -> {
-                    AppCompatDelegate.setDefaultNightMode(
-                        AppCompatDelegate.MODE_NIGHT_NO
-                    )
-                }
-                2 -> {
-                    AppCompatDelegate.setDefaultNightMode(
-                        AppCompatDelegate.MODE_NIGHT_YES
-                    )
-                }
-            }
-        }
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
-            .registerOnSharedPreferenceChangeListener(this)
-    }
 
     private fun showBottomBar(){
         val navBar: BottomNavigationView = findViewById(R.id.bottom_bar)
