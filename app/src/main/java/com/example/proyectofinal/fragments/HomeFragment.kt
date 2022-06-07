@@ -30,7 +30,6 @@ class HomeFragment : Fragment() {
     private lateinit var listPopupWindowButton : Button
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
-    //private var dtiDocument : String = "0"
     private lateinit var goForm : Button
     private lateinit var goAbout : Button
     private lateinit var bOut : Button
@@ -116,7 +115,7 @@ class HomeFragment : Fragment() {
         bOut.setOnClickListener {
 
             AlertDialog.Builder(requireContext())
-                .setMessage("Cerrar Sesión?")
+                .setMessage("Cerrar Aplicacion?")
                 .setCancelable(false)
                 .setPositiveButton("Aceptar") { dialog, whichButton ->
 
@@ -133,7 +132,7 @@ class HomeFragment : Fragment() {
 
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
             AlertDialog.Builder(requireContext())
-                .setMessage("Cerrar Sesión?")
+                .setMessage("Cerrar Aplicacion?")
                 .setCancelable(false)
                 .setPositiveButton("Aceptar") { dialog, whichButton ->
                     FirebaseAuth.getInstance().signOut()
