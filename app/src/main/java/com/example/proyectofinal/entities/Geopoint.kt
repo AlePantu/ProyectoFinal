@@ -7,8 +7,8 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Geopoint (
 
-    var latitud : String,
-    var longitud : String
+    var type: String,
+    var coordinates: ArrayList<Double>,
 
         ): Parcelable {
 }

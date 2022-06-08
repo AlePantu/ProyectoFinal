@@ -34,9 +34,11 @@ class HomeViewModel : ViewModel() {
 
     private lateinit var aforo : String
     private var temp : Float = 0F
-    private lateinit var park : String
+    private  var park : Float = 0F
 
-    private val dtiNames = arrayListOf<String>()
+    private var lugDispo : Int = 0
+
+
 
 
 
@@ -61,17 +63,22 @@ class HomeViewModel : ViewModel() {
 
         var dti =  ListDti[pos]
 
-           //pcAforo.max = dti.maxAforo.toFloat()
-            beachName.text = dti.nombre
+
+            beachName.text = dti.name
           aforo = dti.aforo
-         temp =  dti.temperatura.toFloat()
+         temp =  dti.temperatura
 
-          //pcPark.max = dti.maxPark.toFloat()
-         park = dti.parking
+          pcPark.max = dti.maxParking
+         pcPark.progress = dti.parking
 
 
-          tempView.text = dti.temperatura+"°"
+          tempView.text = dti.temperatura.toString()+"°"
          pcTemp.progress = temp
+        park = dti.parking
+
+        lugDispo = (dti.maxParking - dti.parking).toInt()
+
+        parkView.text = lugDispo.toString()+" Disponibles"
 
         when(aforo){
             "bajo"-> {
@@ -82,7 +89,7 @@ class HomeViewModel : ViewModel() {
                 aforoView.text = "Medio"
                 pcAforo.progress = 50F
             }
-            "alto"-> {
+            "altos"-> {
                 aforoView.text = "Alto"
                 pcAforo.progress = 75F
             }
@@ -92,7 +99,7 @@ class HomeViewModel : ViewModel() {
             }
         }
 
-        when(park){
+      /*  when(park){
             "bajo"-> {
                 parkView.text = "Bajo"
                 pcPark.progress = 25F
@@ -109,7 +116,7 @@ class HomeViewModel : ViewModel() {
                 parkView.text = "Lleno"
                 pcPark.progress = 100F
             }
-        }
+        }*/
 
 
 
@@ -134,8 +141,8 @@ class HomeViewModel : ViewModel() {
 
             val locationB = Location("punto B")
 
-            locationB.latitude = dti.geopoint.latitud.toDouble()
-            locationB.longitude = dti.geopoint.longitud.toDouble()
+            locationB.latitude = dti.location.coordinates[0]
+            locationB.longitude = dti.location.coordinates[1]
 
             val distance = locationA.distanceTo(locationB)
 

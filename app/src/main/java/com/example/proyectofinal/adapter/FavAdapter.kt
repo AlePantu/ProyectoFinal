@@ -51,7 +51,7 @@ class FavAdapter(
         var fav = listOfFavs[position]
 
         var dti = ListDti[fav.toInt()]
-        holder.setName(dti.nombre)
+        holder.setName(dti.name)
 
         holder.getCard().setOnClickListener{
             onClick(position)

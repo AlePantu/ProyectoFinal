@@ -48,9 +48,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       /* androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
-            .registerOnSharedPreferenceChangeListener(this)*/
-
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_login) as NavHostFragment
         bottomNavView = findViewById(R.id.bottom_bar)
         NavigationUI.setupWithNavController(bottomNavView, navHostFragment.navController)
@@ -71,7 +68,9 @@ class MainActivity : AppCompatActivity() {
 
         getLastLocation()
 
-        callServiceGetDti()
+       // callServiceGetDti()
+
+        callServiceGetBack()
 
 
 
@@ -196,13 +195,38 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun callServiceGetBack() {
+        val backService: APIService = RestEngine.getRetrofitDtis().create(APIService::class.java)
+        val result: Call<List<Dti>> = backService.getBackEnd()
+
+        result.enqueue(object : Callback<List<Dti>> {
+            override fun onResponse(
+                call: Call<List<Dti>>,
+                response: Response<List<Dti>>
+            ) {
+                val r = response.body()
+                if (r != null) {
+                    UserRepository.ListDti = r
+                }
+                getDtiNames(UserRepository.ListDti)
+                Toast.makeText(this@MainActivity, "DTI CARGADOS", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
+                Toast.makeText(this@MainActivity, "ERROR", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     fun getDtiNames(list: List<Dti>): MutableList<String> {
 
         for (l in list){
-            ListDtiNombres.addAll(listOf(l.nombre))
+            ListDtiNombres.addAll(listOf(l.name))
         }
         return ListDtiNombres
     }
+
+
 
 }
 

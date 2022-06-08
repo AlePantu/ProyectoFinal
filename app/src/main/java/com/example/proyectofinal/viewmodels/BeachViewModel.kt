@@ -52,8 +52,9 @@ class BeachViewModel : ViewModel() {
 
     private lateinit var aforo : String
     private var temp : Float = 0F
-    private lateinit var park : String
+    private var park : Float = 0F
     private var uvs : Float = 0F
+    private var lugDispo : Int = 0
 
     private lateinit var bandera : String
     private lateinit var rayosUv : String
@@ -90,22 +91,26 @@ class BeachViewModel : ViewModel() {
 
 
            // pcAforo.max = posDti.maxAforo.toFloat()
-            //pcPark.max = posDti.maxPark.toFloat()
+            pcPark.max = posDti.maxParking
             aforo = posDti.aforo
             temp =  posDti.temperatura.toFloat()
             park = posDti.parking
             uvs = posDti.uv.toFloat()
 
-            nameView.text = posDti.nombre
+            nameView.text = posDti.name
            //aforoView.text = posDti.aforo+ " Personas"
-            tempView.text = posDti.temperatura+"°"
-            //parkView.text = posDti.parking+" Ocupados"
+            tempView.text = posDti.temperatura.toString()+"°"
+            //parkView.text = posDti.parking.toString()+" Ocupados"
             bandera = posDti.bandera
             rayosUv = posDti.uv
 
-            altO.text = posDti.altOla+ "mts"
+            altO.text = posDti.altOla.toString()+ "mts"
             velV.text = posDti.velViento + "km/h"
             dirV.text = posDti.dirViento.uppercase()
+
+        lugDispo = (posDti.maxParking - posDti.parking).toInt()
+
+        parkView.text = lugDispo.toString()+" Disponibles"
 
 
             when(bandera){
@@ -158,7 +163,7 @@ class BeachViewModel : ViewModel() {
                     aforoView.text = "Medio"
                     pcAforo.progress = 50F
                 }
-                "alto"-> {
+                "altos"-> {
                     aforoView.text = "Alto"
                     pcAforo.progress = 75F
                 }
@@ -168,7 +173,7 @@ class BeachViewModel : ViewModel() {
                 }
             }
 
-        when(park){
+      /*  when(park){
             "bajo"-> {
                 parkView.text = "Bajo"
                 pcPark.progress = 25F
@@ -185,11 +190,11 @@ class BeachViewModel : ViewModel() {
                 parkView.text = "Lleno"
                 pcPark.progress = 100F
             }
-        }
+        }*/
 
            // pcAforo.progress = aforo
             pcTemp.progress = temp
-           // pcPark.progress = park
+            pcPark.progress = park
             pcUvs.progress = uvs
 
 
