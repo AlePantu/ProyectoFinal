@@ -16,6 +16,7 @@ import com.example.proyectofinal.entities.APIService
 import com.example.proyectofinal.entities.Dti
 import com.example.proyectofinal.entities.RestEngine
 import com.example.proyectofinal.entities.UserRepository
+import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.ListDtiNombres
 import com.example.proyectofinal.entities.UserRepository.dtiDocument
 import com.example.proyectofinal.entities.UserRepository.userBeachSelect
@@ -37,7 +38,6 @@ class HomeFragment : Fragment() {
     private lateinit var listPopupWindowButton : Button
     private lateinit var goBeachButton: Button
     private lateinit var listPopupWindow: ListPopupWindow
-
 
 
 
@@ -74,35 +74,48 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        if(ListDti.isNotEmpty()) {
+            if (!userLatitud.isBlank() && !userLongitud.isBlank()) {
+                //Nos va a mostrar el DTI que se encuentra mas cerca a nuestra posicion por Geolocalizacion
+                vm.dtiCercano(v)
+            } else {
+                vm.showData(dtiDocument.toInt(), v)
+                Toast.makeText(context, "No tiene activado Geolocalizacion", Toast.LENGTH_SHORT)
+                    .show()
+            }
 
-        if(!userLatitud.isBlank() && !userLongitud.isBlank()){
-        //Nos va a mostrar el DTI que se encuentra mas cerca a nuestra posicion por Geolocalizacion
-        vm.dtiCercano(v)}
-        else {
-            vm.showData(dtiDocument.toInt() ,v )
-            Toast.makeText(context , "No tiene activado Geolocalizacion" , Toast.LENGTH_SHORT).show()
-        }
+            // Ajusta el boton de la lista
+            listPopupWindow.anchorView = listPopupWindowButton
 
-        // Ajusta el boton de la lista
-        listPopupWindow.anchorView = listPopupWindowButton
+            val adapter =
+                ArrayAdapter(requireContext(), R.layout.list_popup_window_item, ListDtiNombres)
+            listPopupWindow.setAdapter(adapter)
 
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_popup_window_item, ListDtiNombres)
-        listPopupWindow.setAdapter(adapter)
+            //El Listener cuando elegimos una opcion
+            listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
 
-        //El Listener cuando elegimos una opcion
-      listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
+                //Responde cuando elegimos un boton de la lista
+                vm.showData(position, v)
+                dtiDocument = position.toString()
+                userBeachSelect = position.toString()
 
-          //Responde cuando elegimos un boton de la lista
-          vm.showData(position , v)
-          dtiDocument = position.toString()
-          userBeachSelect = position.toString()
-
-            // Dismiss popup.
-            listPopupWindow.dismiss()
-             }
+                // Dismiss popup.
+                listPopupWindow.dismiss()
+            }
 
             // Muestra la lista
             listPopupWindowButton.setOnClickListener { listPopupWindow.show() }
+        } else {
+
+            AlertDialog.Builder(requireContext())
+                .setMessage("No se ha podido acceder al servidor , Intentelo mas tarde")
+                .setCancelable(false)
+                .setPositiveButton("Aceptar") { dialog, whichButton ->
+                    FirebaseAuth.getInstance().signOut()
+                    vm.cleanLogUser()
+                    activity?.finish()
+                } .show()
+        }
 
 
         goBeachButton.setOnClickListener {

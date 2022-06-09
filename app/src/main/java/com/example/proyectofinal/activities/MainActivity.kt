@@ -27,6 +27,7 @@ import com.example.proyectofinal.entities.APIService
 import com.example.proyectofinal.entities.Dti
 import com.example.proyectofinal.entities.RestEngine
 import com.example.proyectofinal.entities.UserRepository
+import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.ListDtiNombres
 import com.example.proyectofinal.entities.UserRepository.userLatitud
 import com.example.proyectofinal.entities.UserRepository.userLongitud
@@ -186,9 +187,9 @@ class MainActivity : AppCompatActivity() {
 
                 val r = response.body()
                 if (r != null) {
-                    UserRepository.ListDti = r
+                    ListDti = r
                 }
-                getDtiNames(UserRepository.ListDti)
+                getDtiNames(ListDti)
             }
             override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
             }
@@ -206,9 +207,12 @@ class MainActivity : AppCompatActivity() {
             ) {
                 val r = response.body()
                 if (r != null) {
-                    UserRepository.ListDti = r
+                    ListDti = r
                 }
-                getDtiNames(UserRepository.ListDti)
+                if(!r.isNullOrEmpty()){
+                    getDtiNames(ListDti)
+                }
+               // getDtiNames(UserRepository.ListDti)
                 Toast.makeText(this@MainActivity, "DTI CARGADOS", Toast.LENGTH_SHORT).show()
             }
 
