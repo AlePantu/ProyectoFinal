@@ -266,8 +266,20 @@ class BeachViewModel : ViewModel() {
         toast.show()
     }
 
+    fun goMap(idPlaya: String , context : Context) {
 
+        val playa = ListDti[idPlaya.toInt()]
+        val latitud = playa.location.coordinates[0]
+        val longitud = playa.location.coordinates[1]
 
+        val gmmIntentUri = Uri.parse("geo:"+ latitud+"," +longitud+"?q=playa "+playa.name)
+
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+
+        startActivity(context , mapIntent , null)
+
+    }
 
 
 }

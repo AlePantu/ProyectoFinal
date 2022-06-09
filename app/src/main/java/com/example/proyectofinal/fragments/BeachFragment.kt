@@ -1,6 +1,7 @@
 package com.example.proyectofinal.fragments
 
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository
+import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.viewmodels.BeachViewModel
 
 
@@ -54,8 +56,6 @@ class BeachFragment : Fragment() {
 
      idPlaya = BeachFragmentArgs.fromBundle(requireArguments()).dti
 
-
-
       vm.showDataBeach(idPlaya , v)
 
         vm.showButtons(v, idPlaya)
@@ -84,26 +84,11 @@ class BeachFragment : Fragment() {
 
 
         btnMap.setOnClickListener {
-            goMap(idPlaya , v )
+            vm.goMap(idPlaya , requireContext())
         }
 
     }
-    fun goMap(idPlaya: String , v: View) {
 
-        Toast.makeText(v.context, "MAPS", Toast.LENGTH_SHORT).show()
-
-        val playa = UserRepository.ListDti[idPlaya.toInt()]
-        val latitud = playa.location.coordinates[0]
-        val longitud = playa.location.coordinates[1]
-
-        val gmmIntentUri = Uri.parse("geo:"+ latitud+"," +longitud+"?q=playa "+playa.name)
-
-        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-        mapIntent.setPackage("com.google.android.apps.maps")
-
-        startActivity(mapIntent)
-
-    }
 
 
 }

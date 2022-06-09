@@ -1,5 +1,6 @@
 package com.example.proyectofinal.entities
 
+import com.example.proyectofinal.entities.Config.URL_BD
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,7 +14,7 @@ class RestEngine {
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://6180891b8bfae60017adfb16.mockapi.io/")
+                .baseUrl(URL_BD)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

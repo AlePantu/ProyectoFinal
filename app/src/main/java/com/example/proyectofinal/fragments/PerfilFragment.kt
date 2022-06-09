@@ -111,19 +111,8 @@ class PerfilFragment : Fragment() {
             }
         }
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            AlertDialog.Builder(requireContext())
-                .setMessage("Cerrar Aplicacion?")
-                .setCancelable(false)
-                .setPositiveButton("Aceptar") { dialog, whichButton ->
-                    FirebaseAuth.getInstance().signOut()
-                    vm.cleanLogUser()
-                    activity?.finish()
-                }
-                .setNegativeButton("Cancelar") { dialog, whichButton ->
-
-                }
-                .show()
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            vm.dialog(requireContext() , requireActivity())
         }
 
 

@@ -1,9 +1,11 @@
 package com.example.proyectofinal.viewmodels
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.location.Location
 import android.view.View
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.graphics.toColor
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
@@ -12,6 +14,7 @@ import com.example.proyectofinal.entities.UserRepository.ListDti
 import com.example.proyectofinal.entities.UserRepository.dtiDocument
 import com.example.proyectofinal.entities.UserRepository.listOfFavs
 import com.example.proyectofinal.entities.UserRepository.userMailLogin
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import me.tankery.lib.circularseekbar.CircularSeekBar
@@ -32,6 +35,9 @@ class HomeViewModel : ViewModel() {
     private lateinit var pcPark : CircularSeekBar
     private lateinit var parkView: TextView
 
+    private lateinit var listPopupWindowButton: Button
+    private lateinit var listPopupWindow: ListPopupWindow
+
     private lateinit var aforo : String
     private var temp : Float = 0F
     private  var park : Float = 0F
@@ -45,6 +51,33 @@ class HomeViewModel : ViewModel() {
     fun populateFavs() {
         db.collection("users").document(userMailLogin).get().addOnSuccessListener {
            listOfFavs = it.get("favs") as ArrayList<String>
+        }
+    }
+
+    fun showDti(v: View, context: Context) {
+        listPopupWindowButton = v.findViewById(R.id.list_popup_button)
+        listPopupWindow =
+            ListPopupWindow(context, null, androidx.transition.R.attr.listPopupWindowStyle)
+
+        listPopupWindow.anchorView = listPopupWindowButton
+
+        val adapter =
+            ArrayAdapter(context, R.layout.list_popup_window_item, UserRepository.ListDtiNombres)
+        listPopupWindow.setAdapter(adapter)
+
+        listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
+
+            showData(position, v)
+            dtiDocument = position.toString()
+            UserRepository.userBeachSelect = position.toString()
+            listPopupWindow.dismiss()
+
+        }
+
+        listPopupWindowButton.setOnClickListener {
+
+            listPopupWindow.show()
+
         }
     }
 
@@ -99,27 +132,6 @@ class HomeViewModel : ViewModel() {
             }
         }
 
-      /*  when(park){
-            "bajo"-> {
-                parkView.text = "Bajo"
-                pcPark.progress = 25F
-            }
-            "medio"-> {
-                parkView.text = "Medio"
-                pcPark.progress = 50F
-            }
-            "alto"-> {
-                parkView.text = "Alto"
-                pcPark.progress = 75F
-            }
-            "lleno"-> {
-                parkView.text = "Lleno"
-                pcPark.progress = 100F
-            }
-        }*/
-
-
-
     }
 
     fun cleanLogUser() {
@@ -154,6 +166,22 @@ class HomeViewModel : ViewModel() {
         }
         dtiDocument = dtiCerca.toString()
         showData(dtiCerca , v )
+    }
+
+    fun dialog(context: Context, activity : Activity) {
+        AlertDialog.Builder(context)
+            .setMessage("Cerrar Aplicacion?")
+            .setCancelable(false)
+            .setPositiveButton("Aceptar") { dialog, whichButton ->
+                FirebaseAuth.getInstance().signOut()
+                cleanLogUser()
+                activity.finish()
+            }
+            .setNegativeButton("Cancelar") { dialog, whichButton ->
+
+            }
+            .show()
+
     }
 
 

@@ -1,5 +1,8 @@
 package com.example.proyectofinal.viewmodels
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
 import android.view.View
 import android.widget.Button
 import android.widget.Switch
@@ -7,6 +10,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.R
 import com.example.proyectofinal.entities.UserRepository
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.properties.Delegates
 
@@ -98,6 +102,22 @@ class PerfilViewModel : ViewModel() {
 
     fun cleanLogUser() {
         UserRepository.userMailLogin = ""
+    }
+
+    fun dialog(context: Context, activity : Activity) {
+        AlertDialog.Builder(context)
+            .setMessage("Cerrar Aplicacion?")
+            .setCancelable(false)
+            .setPositiveButton("Aceptar") { dialog, whichButton ->
+                FirebaseAuth.getInstance().signOut()
+                cleanLogUser()
+                activity.finish()
+            }
+            .setNegativeButton("Cancelar") { dialog, whichButton ->
+
+            }
+            .show()
+
     }
 
 }

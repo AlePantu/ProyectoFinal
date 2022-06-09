@@ -58,14 +58,7 @@ class HomeFragment : Fragment() {
     ): View? {
        v =inflater.inflate(R.layout.fragment_home, container, false)
 
-
-        listPopupWindowButton = v.findViewById(R.id.list_popup_button)
         goBeachButton = v.findViewById(R.id.goBeachBtn)
-        listPopupWindow = ListPopupWindow(requireContext(), null, androidx.transition.R.attr.listPopupWindowStyle)
-
-
-
-
         bOut = v.findViewById(R.id.btnLogout)
 
         return v
@@ -84,27 +77,8 @@ class HomeFragment : Fragment() {
                     .show()
             }
 
-            // Ajusta el boton de la lista
-            listPopupWindow.anchorView = listPopupWindowButton
+            vm.showDti(v, requireContext())
 
-            val adapter =
-                ArrayAdapter(requireContext(), R.layout.list_popup_window_item, ListDtiNombres)
-            listPopupWindow.setAdapter(adapter)
-
-            //El Listener cuando elegimos una opcion
-            listPopupWindow.setOnItemClickListener { _: AdapterView<*>?, _: View?, position: Int, _: Long ->
-
-                //Responde cuando elegimos un boton de la lista
-                vm.showData(position, v)
-                dtiDocument = position.toString()
-                userBeachSelect = position.toString()
-
-                // Dismiss popup.
-                listPopupWindow.dismiss()
-            }
-
-            // Muestra la lista
-            listPopupWindowButton.setOnClickListener { listPopupWindow.show() }
         } else {
 
             AlertDialog.Builder(requireContext())
@@ -114,9 +88,14 @@ class HomeFragment : Fragment() {
                     FirebaseAuth.getInstance().signOut()
                     vm.cleanLogUser()
                     activity?.finish()
-                } .show()
-        }
 
+                }
+                .setNegativeButton("Contacto") { dialog, whichButton ->
+                    val action = HomeFragmentDirections.actionHomeFragmentToContactoFragment()
+                    v.findNavController().navigate(action)
+                }
+                .show()
+        }
 
         goBeachButton.setOnClickListener {
 
@@ -124,41 +103,13 @@ class HomeFragment : Fragment() {
             v.findNavController().navigate(action)
         }
 
-
-
         bOut.setOnClickListener {
 
-            AlertDialog.Builder(requireContext())
-                .setMessage("Cerrar Aplicacion?")
-                .setCancelable(false)
-                .setPositiveButton("Aceptar") { dialog, whichButton ->
-
-                    FirebaseAuth.getInstance().signOut()
-                    vm.cleanLogUser()
-                    activity?.finish()
-
-                }
-                .setNegativeButton("Cancelar") { dialog, whichButton ->
-
-                }
-                .show()
+            vm.dialog(requireContext(),requireActivity())
         }
 
-
-
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            AlertDialog.Builder(requireContext())
-                .setMessage("Cerrar Aplicacion?")
-                .setCancelable(false)
-                .setPositiveButton("Aceptar") { dialog, whichButton ->
-                    FirebaseAuth.getInstance().signOut()
-                    vm.cleanLogUser()
-                    activity?.finish()
-                }
-                .setNegativeButton("Cancelar") { dialog, whichButton ->
-
-                }
-                .show()
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            vm.dialog(requireContext() , requireActivity())
         }
 
     }
