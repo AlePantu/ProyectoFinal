@@ -69,8 +69,6 @@ class MainActivity : AppCompatActivity() {
 
         getLastLocation()
 
-       // callServiceGetDti()
-
         callServiceGetBack()
 
 
@@ -175,26 +173,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun callServiceGetDti() {
-        val dtiService : APIService = RestEngine.getRetrofitDtis().create(APIService::class.java)
-        val result : Call<List<Dti>> = dtiService.getDtiList()
-
-        result.enqueue(object : Callback<List<Dti>> {
-            override fun onResponse(
-                call: Call<List<Dti>>,
-                response: Response<List<Dti>>
-            ) {
-
-                val r = response.body()
-                if (r != null) {
-                    ListDti = r
-                }
-                getDtiNames(ListDti)
-            }
-            override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
-            }
-        })
-    }
 
     private fun callServiceGetBack() {
         val backService: APIService = RestEngine.getRetrofitDtis().create(APIService::class.java)
@@ -223,10 +201,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getDtiNames(list: List<Dti>): MutableList<String> {
-
-        for (l in list){
-            ListDtiNombres.addAll(listOf(l.name))
-        }
+        if(ListDtiNombres.isEmpty()) {
+                for (l in list) {
+                    ListDtiNombres.addAll(listOf(l.name))
+                }
+            }
         return ListDtiNombres
     }
 
