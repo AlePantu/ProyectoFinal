@@ -39,6 +39,7 @@ class EditProfileFragment : Fragment() {
 
         saveBtn.setOnClickListener {
             vm.saveData(v)
+            activity?.onBackPressed()
         }
 
         backBtn.setOnClickListener {

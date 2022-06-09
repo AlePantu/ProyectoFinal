@@ -12,23 +12,25 @@
         android:layout_width="306dp"
         android:layout_height="367dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/misFavsTV"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/misFavsTV"
         app:layout_constraintTop_toBottomOf="@+id/misFavsTV" />
 
     <TextView
         android:id="@+id/misFavsTV"
         android:layout_width="291dp"
         android:layout_height="57dp"
-        android:layout_marginTop="64dp"
-        android:fontFamily="cursive"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/dm_sans"
         android:text="Mis favoritos"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/teal_200"
         android:textSize="42sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

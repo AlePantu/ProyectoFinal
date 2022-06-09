@@ -43,6 +43,7 @@ class EditProfileViewModel : ViewModel() {
             ) ,
             SetOptions.merge()
         )
+
     }
 
     fun showData(v: View) {

@@ -5,6 +5,7 @@
     <string name="messages_header">Mensajes</string>
     <string name="sync_header">Opciones Personales</string>
     <string name="night_mode_header">Opciones Visuales</string>
+    <string name="datos_personales">Datos Personales</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Mi firma</string>
