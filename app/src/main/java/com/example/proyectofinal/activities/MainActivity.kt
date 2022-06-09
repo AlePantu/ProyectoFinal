@@ -190,8 +190,8 @@ class MainActivity : AppCompatActivity() {
                 if(!r.isNullOrEmpty()){
                     getDtiNames(ListDti)
                 }
-               // getDtiNames(UserRepository.ListDti)
-                Toast.makeText(this@MainActivity, "DTI CARGADOS", Toast.LENGTH_SHORT).show()
+
+
             }
 
             override fun onFailure(call: Call<List<Dti>>, t: Throwable) {
@@ -205,6 +205,7 @@ class MainActivity : AppCompatActivity() {
                 for (l in list) {
                     ListDtiNombres.addAll(listOf(l.name))
                 }
+            Toast.makeText(this@MainActivity, "DTI CARGADOS", Toast.LENGTH_SHORT).show()
             }
         return ListDtiNombres
     }
