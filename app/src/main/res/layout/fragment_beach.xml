@@ -13,7 +13,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         app:cs_circle_color="@android:color/holo_green_dark"
         app:cs_circle_progress_color="@android:color/holo_red_dark"
@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/aforoTextView"
@@ -78,9 +78,10 @@
         app:cs_use_custom_radii="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/pcpark"
+        app:layout_constraintHorizontal_bias="0.556"
         app:layout_constraintStart_toEndOf="@+id/pcaforo"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcUv"
@@ -109,6 +110,7 @@
         app:cs_start_angle="180"
         app:cs_use_custom_radii="false"
         app:layout_constraintEnd_toEndOf="@+id/pctemp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/flagImage"
         app:layout_constraintTop_toBottomOf="@+id/pctemp" />
 
@@ -126,16 +128,14 @@
 
     <TextView
         android:id="@+id/nameBeach"
-        android:layout_width="290dp"
+        android:layout_width="281dp"
         android:layout_height="61dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="32dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <me.tankery.lib.circularseekbar.CircularSeekBar
         android:id="@+id/pcpark"
@@ -143,7 +143,7 @@
         android:layout_height="100dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         app:cs_circle_color="@android:color/holo_green_dark"
         app:cs_circle_progress_color="@android:color/holo_red_dark"
         app:cs_circle_stroke_width="8dp"
@@ -166,7 +166,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.308" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <TextView
         android:id="@+id/parkTextView"
@@ -201,8 +201,10 @@
         android:text="Temperatura"
         app:layout_constraintBottom_toTopOf="@+id/pctemp"
         app:layout_constraintEnd_toEndOf="@+id/pctemp"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="@+id/pctemp" />
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toStartOf="@+id/pctemp"
+        app:layout_constraintTop_toBottomOf="@+id/nameBeach"
+        app:layout_constraintVertical_bias="0.976" />
 
     <TextView
         android:id="@+id/textView12"
@@ -250,8 +252,21 @@
         style="@style/Divider"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tempTextView" />
+
+    <View
+        android:id="@+id/view"
+        style="@style/Divider"
+        android:layout_width="wrap_content"
+        android:layout_height="3dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pcUv" />
 
     <Button
         android:id="@+id/btnAddFavoritos"
@@ -282,11 +297,10 @@
         android:id="@+id/space2"
         android:layout_width="0dp"
         android:layout_height="24dp"
-        android:layout_marginTop="176dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pctemp" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <ImageView
         android:id="@+id/flagImage"
@@ -303,13 +317,12 @@
         android:id="@+id/flagTextView"
         android:layout_width="114dp"
         android:layout_height="32dp"
-        android:layout_marginBottom="24dp"
         android:text="TextView"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/space2"
         app:layout_constraintEnd_toEndOf="@+id/flagImage"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="@+id/flagImage" />
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/flagImage"
+        app:layout_constraintTop_toTopOf="@+id/uvRaystextView" />
 
     <TextView
         android:id="@+id/textView14"
@@ -332,8 +345,10 @@
         android:text="Rayos UV"
         app:layout_constraintBottom_toTopOf="@+id/pcUv"
         app:layout_constraintEnd_toEndOf="@+id/pcUv"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="@+id/pcUv"
-        app:layout_constraintTop_toBottomOf="@+id/pctemp" />
+        app:layout_constraintTop_toBottomOf="@+id/pctemp"
+        app:layout_constraintVertical_bias="0.538" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -360,33 +375,35 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         android:text="Velocidad"
-        app:layout_constraintEnd_toStartOf="@+id/textView17"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/pcpark"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toEndOf="@+id/pcUv"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pcUv"
+        app:layout_constraintTop_toBottomOf="@+id/pcUv" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Direccion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/pcUv" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
         android:text="Viento"
-        app:layout_constraintEnd_toEndOf="@+id/pcpark"
-        app:layout_constraintStart_toStartOf="@+id/pcpark"
-        app:layout_constraintTop_toBottomOf="@+id/pcpark" />
+        app:layout_constraintBottom_toTopOf="@+id/space2"
+        app:layout_constraintEnd_toEndOf="@+id/flagImage"
+        app:layout_constraintStart_toStartOf="@+id/flagImage"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
 
     <ImageView
         android:id="@+id/imageView9"
@@ -403,6 +420,7 @@
         android:layout_height="36dp"
         android:src="@drawable/windirection"
         app:layout_constraintEnd_toEndOf="@+id/textView17"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -428,11 +446,11 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:text="Altura Olas"
-        app:layout_constraintEnd_toEndOf="@+id/windVelTV"
-        app:layout_constraintStart_toStartOf="@+id/windVelTV"
-        app:layout_constraintTop_toBottomOf="@+id/windVelTV" />
+        app:layout_constraintEnd_toEndOf="@+id/pcpark"
+        app:layout_constraintStart_toStartOf="@+id/pcpark"
+        app:layout_constraintTop_toBottomOf="@+id/pcpark" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -440,9 +458,9 @@
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/waves"
-        app:layout_constraintEnd_toEndOf="@+id/imageView10"
-        app:layout_constraintStart_toStartOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/windDirTV" />
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/altOlasTV" />
 
     <TextView
         android:id="@+id/altOlasTV"
