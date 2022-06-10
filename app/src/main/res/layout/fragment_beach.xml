@@ -128,7 +128,7 @@
         android:id="@+id/nameBeach"
         android:layout_width="290dp"
         android:layout_height="61dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="30sp"

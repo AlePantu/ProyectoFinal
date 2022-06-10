@@ -11,10 +11,6 @@ class RecuMailViewModel : ViewModel() {
 
     private lateinit var mAuth : FirebaseAuth
 
-
-
-
-
     fun resetPassword(emailRecu: String , v : View) {
         mAuth = FirebaseAuth.getInstance()
 

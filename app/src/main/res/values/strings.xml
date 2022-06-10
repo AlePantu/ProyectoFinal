@@ -1,17 +1,12 @@
 <resources>
     <string name="app_name">Mi DTI</string>
     <string name="textview">TextView</string>
-    <!-- Preference Titles -->
+
     <string name="messages_header">Mensajes</string>
     <string name="sync_header">Opciones Personales</string>
     <string name="night_mode_header">Opciones Visuales</string>
     <string name="datos_personales">Datos Personales</string>
 
-    <!-- Messages Preferences -->
-    <string name="signature_title">Mi firma</string>
-    <string name="reply_title">Indique su condición</string>
-
-    <!-- Sync Preferences -->
     <string name="sync_title">Recibir notificaciones</string>
     <string name="attachment_title">Compartir mi información</string>
     <string name="attachment_summary_on">Acepto compartir mi información para mejorar la experiencia de usuario
@@ -21,5 +16,7 @@
 
     <string name="formulario_text"> Complete el formulario cuando visita algun punto DTI,
     ayudenos a mejorar su experiencia</string>
+    <string name="recu_pass"> Restablecer contraseña</string>
+    <string name="recu_pass_text">Ingrese su e-mail, se le enviará un correo para modificar su contraseña </string>
 
 </resources>

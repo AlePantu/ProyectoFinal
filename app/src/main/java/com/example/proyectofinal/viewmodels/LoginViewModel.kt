@@ -27,13 +27,13 @@ class LoginViewModel : ViewModel() {
 
 
 
-        Snackbar.make(v, "Error: se ha producido un error registrando al usuaio", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(v, "Error: se ha producido un error registrando al usuario", Snackbar.LENGTH_SHORT).show()
     }
 
     fun loginFail(v : View){
 
 
-        Snackbar.make(v, "USUARIO or PASSWORD incorrecto", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(v, "USUARIO y/o PASSWORD incorrecto", Snackbar.LENGTH_SHORT).show()
 
 
 

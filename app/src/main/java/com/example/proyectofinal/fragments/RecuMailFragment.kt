@@ -43,11 +43,6 @@ class RecuMailFragment : Fragment() {
         return v
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
-    }
-
     override fun onStart() {
         super.onStart()
 

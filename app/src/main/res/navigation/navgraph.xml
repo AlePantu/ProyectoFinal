@@ -48,10 +48,6 @@
             app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.proyectofinal.fragments.SettingsFragment"
-        android:label="SettingsFragment" />
-    <fragment
         android:id="@+id/beachFragment"
         android:name="com.example.proyectofinal.fragments.BeachFragment"
         android:label="fragment_beach"
